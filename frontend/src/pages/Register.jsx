@@ -97,7 +97,7 @@ function Register() {
     setSuccessMessage("Compte créé avec succès !");
     setTimeout(() => navigate("/dashboard"), 2000);
   } catch (err) {
-    console.error("❌ Erreur d'inscription :", err);
+    console.error("Erreur d'inscription :", err);
     alert("Échec de l'inscription : " + err.message);
   } finally {
     setLoading(false);
