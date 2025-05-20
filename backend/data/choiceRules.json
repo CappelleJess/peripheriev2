@@ -1,0 +1,22 @@
+{
+  "examinerObjet": {
+    "souvenirScore": 10,
+    "ancragePasse": -5,
+    "emergenceNostalgie": 7
+  },
+  "sentirObjet": {
+    "souvenirScore": 5,
+    "ancragePasse": 0,
+    "emergenceNostalgie": 10
+  },
+  "ignorerObjet": {
+    "souvenirScore": -2,
+    "ancragePasse": 2,
+    "emergenceNostalgie": 0
+  },
+  "ouvrirBoite": {
+    "souvenirScore": 15,
+    "ancragePasse": 5,
+    "emergenceNostalgie": 12
+  }
+}

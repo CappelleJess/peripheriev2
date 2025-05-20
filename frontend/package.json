@@ -1,0 +1,53 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.9.0",
+    "framer-motion": "^12.7.4",
+    "jwt-decode": "^4.0.0",
+    "phaser": "^3.88.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-router-dom": "^7.5.0",
+    "react-scripts": "^5.0.1",
+    "react-toastify": "^11.0.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "tailwind": "tailwindcss -i ./src/tailwind.css -o ./src/index.css --watch",
+    "dev": "concurrently -k -n \"TAILWIND,FRONTEND,BACKEND,GAME\" -c \"green,blue,magenta,cyan\" \"npm run tailwind\" \"npm run start\" \"cd ../backend && npm run dev\" \"cd ../game && npm run dev\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.27.1",
+    "concurrently": "^9.1.2",
+    "eslint-webpack-plugin": "^5.0.1"
+  }
+}

@@ -1,0 +1,437 @@
+/* ========== GLOBAL ========== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Mono', sans-serif;
+  background-color: #111;
+  color: #33ff33;
+  line-height: 1.6;
+  /*background-image: radial-gradient(#0a0a0a 1px, transparent 1px);*/
+  background-size: 5px 5px;
+}
+
+/* Effet CRT */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.15;
+  mix-blend-mode: screen;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 0, 0.2),
+      rgba(0, 255, 0, 0.2) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+  animation: crtScanlines 2s ease-in-out infinite;
+}
+
+@keyframes crtScanlines {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.05; }
+}
+
+/* ========== CANVAS/GAME ========== */
+canvas {
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+/* ========== HEADER / NAV ========== */
+.custom-header {
+  background-color: #1b1f3b;
+  color: #d6c7ae;
+  border-bottom: 2px solid #4a90e2;
+  padding: 0.5rem 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00ff9f;
+}
+
+.logo-img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.nav-links a {
+  color: #d6c7ae;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #e60073;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #d6c7ae;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  color: #d65a31;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #6b728e;
+  padding: 1rem;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  border-left: 2px solid #9b5de5;
+  border-bottom: 2px solid #9b5de5;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  color: #d6c7ae;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  color: #00ff9f;
+}
+
+/* ========== MAIN / FORMULAIRES ========== */
+main {
+  padding: 2rem;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+  background-color: #000;
+  padding: 2rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #33ff33;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #111;
+  border: 1px solid #33ff33;
+  color: #33ff33;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #66ff66;
+  box-shadow: 0 0 5px #33ff33;
+}
+
+form p {
+  font-size: 0.9rem;
+  color: red;
+}
+
+/* ========== FOOTER ========== */
+.retro-footer {
+  background-color: #1b1f3b;
+  color: #00ff9f;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  border-top: 2px solid #4a90e2;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 -2px 10px #00ff9f33;
+}
+
+.crt-text {
+  margin: 0.3rem 0;
+  text-shadow: 0 0 2px #00ff9f, 0 0 10px #00ff9f33;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  body {
+    font-size: 90%;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  form {
+    width: 90%;
+  }
+}
+
+/* ========== CURSEUR CLIGNOTANT STYLE TERMINAL ========== */
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  background-color: #33ff33;
+  margin-left: 5px;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.font-terminal {
+  font-family: 'Courier New', monospace;
+}
+
+/* ========== INTRODUCTION TERMINAL ========== */
+
+.pixel-font {
+  font-family: 'Press Start 2P', monospace !important;
+}
+
+.titre-retro {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 2px #00ff9f;
+}
+
+.terminal-intro {
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #33ff33;
+  background-color: #000;
+  min-height: 40vh;
+  max-height: 70vh;
+  padding: 2rem;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 4px #33ff33;
+  border: 1px solid #33ff33;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #33ff33aa;
+  width: 70%;
+  max-width: 900px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: #33ff33;
+  margin-left: 5px;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ========== FENETRE TERMINAL ========== */
+
+.fenetre-retro {
+  background-color: #1b1f3b;
+  border: 1px solid #4a90e2;
+  box-shadow: 0 0 12px #00ff9f55;
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 8px;
+  color: #d6c7ae;
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+}
+
+.fenetre-retro-title {
+  position: absolute;
+  top: -1.2rem;
+  left: 1rem;
+  background-color: #1b1f3b;
+  padding: 0 0.5rem;
+  font-weight: bold;
+  color: #00ff9f;
+  text-shadow: 0 0 3px #00ff9f99;
+}
+
+.fenetre-retro-content {
+  margin-top: 0.5rem;
+}
+
+.fenetre-retro-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #4a90e2;
+}
+
+.fenetre-retro-tab {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: #00ff9f;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+}
+
+.fenetre-retro-tab.active {
+  border-bottom: 2px solid #00ff9f;
+  color: #d6c7ae;
+}
+
+/* ========== FENETRE ALERT TOAST ========== */
+
+.retro-toast {
+  background-color: #1b1f3b !important;
+  color: #faf3e0 !important;
+  font-family: 'Press Start 2P', monospace !important;
+  border: 2px solid #e60073 !important;
+  box-shadow: 0 0 8px #d65a31 !important;
+  font-size: 10px !important;
+  text-align: center !important;
+  padding: 16px !important;
+}
+
+.retro-toast-body {
+  font-size: 12px !important;
+  line-height: 1.5;
+  text-align: center !important;
+}
+
+.retro-toast-progress {
+  background: linear-gradient(to right, #00ff9f, #9b5de5) !important;
+}
+
+.retro-toast .Toastify__close-button {
+  color: #faf3e0 !important;
+  opacity: 1 !important;
+  font-size: 14px;
+}
+
+.retro-toast .Toastify__close-button:hover {
+  color: #e60073 !important;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .dropdown-menu {
+    display: flex;
+  }
+}
+
+/* ====== TYPOGRAPHIE ====== */
+
+main, section, article {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.4;
+  margin-bottom: 2.5rem;
+  color: #00ff9f;
+  text-shadow: 0 0 2px #00ff9f88;
+}
+
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1rem; }
+
+p {
+  font-family: 'Courier New', sans-serif;
+  font-size: 0.95rem;
+  color: #d6c7ae;
+}
+
+/* ====== BOUTONS ====== */
+
+.btn-retro {
+  background-color: #4a90e2;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  padding: 0.5rem 1rem;
+  border: 2px solid #00ff9f;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 6px #00ff9f88;
+}
+
+.btn-retro:hover {
+  background-color: #357ABD;
+}
+
+button:not(.btn-retro) {
+  background-color: #222;
+  color: #faf3e0;
+  font-family: 'Courier New', monospace;
+  border: 1px solid #00ff9f;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
