@@ -30,22 +30,27 @@ function Login() {
     setError(null);
     console.log("Tentative de connexion...");
 
-      try {
-        await window.grecaptcha.ready(async () => {
-          //const captchaToken = await window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, { action: 'submit' });
-          const captchaToken = await window.grecaptcha.execute('6LeIgEArAAAAAPc76g2D1L-ts6PZ5iNpWW_DtDlO', { action: 'submit' }); // Pour développement
-
-          await login(email, password, captchaToken);
-          console.log("Connexion réussie, redirection...");
-          navigate("/dashboard");
-        });
-      } catch (err) {
-        console.error("Erreur attrapée lors de la connexion: ", err);
-        setError(err.response?.data?.message || "Identifiants incorrects");
-      } finally {
-        setLoading(false);
-      }
-};
+    try {
+      window.grecaptcha.ready(() => {
+        window.grecaptcha
+          .execute('6LeIgEArAAAAAPc76g2D1L-ts6PZ5iNpWW_DtDlO', { action: 'login' })
+          .then(async (captchaToken) => {
+            await login(email, password, captchaToken);
+            console.log("Connexion réussie, redirection...");
+            navigate("/dashboard");
+          })
+          .catch((err) => {
+            console.error("Erreur reCAPTCHA :", err);
+            setError("Erreur de vérification reCAPTCHA.");
+          })
+          .finally(() => setLoading(false));
+      });
+    } catch (err) {
+      console.error("Erreur lors de la connexion :", err);
+      setError(err.response?.data?.message || "Identifiants incorrects");
+      setLoading(false); // fallback si .finally ne se déclenche pas
+    }
+  };
 
   return (
     <div>
