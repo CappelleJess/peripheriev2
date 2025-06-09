@@ -13,7 +13,6 @@ const start = async () => {
       user: '680e9fef6736b7b280dad685', // remplace avec un _id d'utilisateur valide
       displayName: 'EchoPlayer',
       avatar: '',
-      avatar: '',
       souvenirScore: 0,
       ancragePasse: 0,
       emergenceNostalgie: 0,

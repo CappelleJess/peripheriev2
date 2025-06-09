@@ -1,7 +1,7 @@
 // controllers/userController.js
 
-import User from '../models/User.js';
-import Profile from '../models/Profile.js';
+import User from '../backend/models/User.js';
+import Profile from '../backend/models/Profile.js';
 
 /**
  * Récupérer le profil de l'utilisateur connecté

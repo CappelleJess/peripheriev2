@@ -1,4 +1,4 @@
-import api from "./axios";
+import api from "../utils/api";
 
 // Inscription
 export const register = async ({ username, email, password, captchaToken }) => {

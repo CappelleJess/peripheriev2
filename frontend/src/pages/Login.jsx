@@ -31,24 +31,32 @@ function Login() {
     console.log("Tentative de connexion...");
 
     try {
-      window.grecaptcha.ready(() => {
-        window.grecaptcha
-          .execute('6LeIgEArAAAAAPc76g2D1L-ts6PZ5iNpWW_DtDlO', { action: 'login' })
-          .then(async (captchaToken) => {
-            await login(email, password, captchaToken);
-            console.log("Connexion réussie, redirection...");
-            navigate("/dashboard");
-          })
-          .catch((err) => {
-            console.error("Erreur reCAPTCHA :", err);
-            setError("Erreur de vérification reCAPTCHA.");
-          })
-          .finally(() => setLoading(false));
+      if (!window.grecaptcha) {
+        throw new Error("reCAPTCHA non chargé !");
+      }
+
+      const siteKey = "6LeIgEArAAAAAPc76g2D1L-ts6PZ5iNpWW_DtDlO";
+
+      // Attente du token reCAPTCHA
+      const captchaToken = await new Promise((resolve, reject) => {
+        window.grecaptcha.ready(() => {
+          window.grecaptcha.execute(siteKey, { action: "login" })
+            .then((token) => {
+              if (!token) reject(new Error("Token null"));
+              else resolve(token);
+            })
+            .catch(reject);
+        });
       });
+
+      // Envoie la demande de login
+      await login(email, password, captchaToken);
+      navigate("/dashboard");
     } catch (err) {
       console.error("Erreur lors de la connexion :", err);
-      setError(err.response?.data?.message || "Identifiants incorrects");
-      setLoading(false); // fallback si .finally ne se déclenche pas
+      setError(err.response?.data?.message || err.message || "Échec de connexion.");
+    } finally {
+      setLoading(false);
     }
   };
 

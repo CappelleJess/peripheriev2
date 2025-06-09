@@ -9,7 +9,7 @@ const ChargementRetro = ({ message = "Chargement du profil..." }) => {
         animate={{ opacity: 1 }}
         transition={{ repeat: Infinity, duration: 1, repeatType: "reverse" }}
       >
-        🧠
+
       </motion.div>
       <p>{message}</p>
       <div className="mt-2 w-32 h-1 bg-[#6b728e] rounded">
