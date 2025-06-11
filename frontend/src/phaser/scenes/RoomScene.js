@@ -9,12 +9,14 @@ import api from '../../utils/api';
 export default class RoomScene extends Phaser.Scene {
   constructor() {
     super('RoomScene');
+    this.interactionLocked = false; // Évite les doubles clics
   }
 
   create() {
     // Apparition en fondu
-    this.cameras.main.setBackgroundColor('#000000');
-    this.cameras.main.fadeIn(1000, 0, 0, 0);
+    this.cameras.main.fadeIn(1000, 0, 0, 0); // this.cameras.main.fadeIn(1000);    
+    this.cameras.main.setBackgroundColor('#000000'); // this.add.image(0, 0, "background").setOrigin(0);
+
 
     /* Son d’ambiance prévu mais non utilisé dans cette version
     Son d'ambiance

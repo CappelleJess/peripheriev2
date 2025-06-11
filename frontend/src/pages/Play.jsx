@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 import gameConfig from '../phaser/gameConfig';
 import FenetrePageJeu from '../components/FenetrePageJeu';
 import GameState from '../phaser/data/GameState';
-
+import api from '../utils/api';
 
 let gameInstance = null;
 
