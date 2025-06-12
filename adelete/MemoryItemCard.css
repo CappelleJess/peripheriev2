@@ -1,0 +1,42 @@
+.memory-card {
+  background-color: #1b1f3b;
+  border: 2px solid #e60073;
+  padding: 12px;
+  width: 160px;
+  margin: 8px;
+  box-shadow: 0 0 8px #4a90e2;
+  color: #faf3e0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.memory-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+.memory-title {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.memory-description {
+  font-size: 10px;
+  margin: 4px 0;
+}
+
+.memory-date {
+  font-size: 9px;
+  color: #9b5de5;
+}
+
+.memory-card-locked {
+  opacity: 0.3;
+  filter: grayscale(100%);
+}

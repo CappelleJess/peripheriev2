@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import ScoreTotal from './ScoreTotal';
 import '../styles/Progression.css';
 
 const Progression = () => {
@@ -37,10 +38,12 @@ const Progression = () => {
 
   // Déstructure les scores et les assets débloqués depuis le profil
   const { souvenirScore, ancragePasse, emergenceNostalgie, unlockedAssets = [] } = profile;
+  const moyenneScore = Math.round((souvenirScore + ancragePasse + emergenceNostalgie) / 3);
 
   return (
     <div className="progression-box">
       <h2>Progression du joueur</h2>
+      <ScoreTotal score={moyenneScore} />
 
       {/* Affichage des 3 scores clés */}
       <div className="scores">

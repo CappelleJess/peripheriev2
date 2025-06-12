@@ -1,11 +1,4 @@
-const icones = {
-  fleur: "🌸",
-  cadre: "🖼️",
-  ordinateur: "🖥️",
-  livre: "📖",
-  photo: "🖼️",
-  lettre: "📜",
-};
+import MemoryItemCard from './MemoryItemCard';
 
 const ObjetsMemoire = ({ objets }) => {
   if (!objets || objets.length === 0) {
@@ -22,8 +15,7 @@ const ObjetsMemoire = ({ objets }) => {
       <ul className="flex flex-wrap gap-2">
         {objets.map((obj, index) => (
           <li key={index} className="px-2 py-1 bg-[#2e2e2e] rounded text-xl flex items-center">
-            <span>{icones[obj] || "❓"}</span>
-            <span className="ml-2 text-sm">{obj}</span>
+            <MemoryItemCard item={obj} />
           </li>
         ))}
       </ul>
