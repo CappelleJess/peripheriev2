@@ -51,6 +51,12 @@ export default class RoomScene extends Phaser.Scene {
       fill: '#ffffff'
     });
 
+    this.startTime = Date.now(); // Init du timer
+    this.timerText = this.add.text(20, 110, '00:00:00', {
+      fontSize: '20px',
+      fill: '#ffffff'
+    });
+
     // Chargement des scores backend
     this.initGameProgress();
 
@@ -69,16 +75,6 @@ export default class RoomScene extends Phaser.Scene {
   }
 
   update() {
-    // Si halos lumineux sont actifs, les synchroniser avec les objets
-    if (this.memoryObjects) {
-      this.memoryObjects.forEach(({ object, halo }) => {
-        if (halo) {
-          halo.x = object.x;
-          halo.y = object.y;
-        }
-      });
-    }
-
     // Fin du niveau après 3 interactions
     if (GameState.objectsInteracted >= 3 && !this.transitioning) {
       this.transitioning = true;
@@ -90,13 +86,13 @@ export default class RoomScene extends Phaser.Scene {
       });
     }
 
-  if (!this.isPaused) {
-    const elapsed = Date.now() - this.startTime;
-    const hours = Math.floor(elapsed / 3600000).toString().padStart(2, '0');
-    const minutes = Math.floor((elapsed % 3600000) / 60000).toString().padStart(2, '0');
-    const seconds = Math.floor((elapsed % 60000) / 1000).toString().padStart(2, '0');
-    this.timerText.setText(`${hours}:${minutes}:${seconds}`);
-}
+    if (!this.isPaused && this.timerText) {
+      const elapsed = Date.now() - this.startTime;
+      const hours = Math.floor(elapsed / 3600000).toString().padStart(2, '0');
+      const minutes = Math.floor((elapsed % 3600000) / 60000).toString().padStart(2, '0');
+      const seconds = Math.floor((elapsed % 60000) / 1000).toString().padStart(2, '0');
+      this.timerText.setText(`${hours}:${minutes}:${seconds}`);
+    }
   }
 
   // MàJ des scores

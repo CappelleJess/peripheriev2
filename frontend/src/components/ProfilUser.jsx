@@ -1,5 +1,7 @@
 import { useState } from "react";
 import api from "../utils/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProfilUser = ({ profile, setProfile }) => {
   const [displayName, setDisplayName] = useState(profile.displayName || '');
@@ -12,11 +14,20 @@ const ProfilUser = ({ profile, setProfile }) => {
   const handleSave = async () => {
     try {
       setIsSaving(true);
-      const res = await api.put('/profile', { displayName });
-      setProfile(res.data); // Mise à jour de l’état parent
-      alert("Nom mis à jour !");
+      const updatedProfile = { ...profile, displayName };
+      const res = await api.put('/profile', updatedProfile);
+
+      if (res.status === 200 && res.data) {
+        if (typeof setProfile === "function") {
+          setProfile(res.data);
+        }
+        toast.success("Nom mis à jour !");
+      } else {
+        throw new Error("Réponse inattendue du serveur");
+      }
     } catch (error) {
-      alert("Erreur lors de la mise à jour du profil.");
+      console.error("Erreur de mise à jour du profil :", error);
+      toast.error(error.response?.data?.message || "Erreur lors de la mise à jour du profil.");
     } finally {
       setIsSaving(false);
     }

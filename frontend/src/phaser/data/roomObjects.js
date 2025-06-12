@@ -11,11 +11,11 @@ export const memoryObjectsConfig = [
         scores: { souvenir: 1, ancrage: 1, nostalgie: 1 }
       },
       smell: {
-        text: "L'odeur de la fleur t'envahit, apportant avec elle des souvenirs chaleureux mais lourds.",
+        text: "L'odeur de la fleur t'envahit, apportant avec elle des bribes de souvenirs.",
         scores: { souvenir: 2, ancrage: 2 }
       },
       ignore: {
-        text: "Tu détournes le regard, préférant éviter de raviver ce souvenir.",
+        text: "Ce n'est qu'un brin de fleur fâné.",
         scores: { ancrage: -1 }
       }
     }
@@ -49,7 +49,7 @@ export const memoryObjectsConfig = [
         scores: { souvenir: 3, nostalgie: 1 }
       },
       ignore: {
-        text: "Tu fermes le carnet sans l’ouvrir, comme pour te protéger.",
+        text: "Tu inspectes rapidement la couverture, juste un journal sans importance.",
         scores: { ancrage: -1 }
       }
     }

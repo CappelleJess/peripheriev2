@@ -35,7 +35,7 @@ const GameState = {
     this.emergenceNostalgie = Math.min(100, Math.max(0,data.emergenceNostalgie || 0));
     this.interactions = data.interactions || this.interactions;
     this.objectsInteracted = data.objectsInteracted || 0;
-  };
+  },
 
   // MàJ un score sécurisée
   updateScore(key, value) {

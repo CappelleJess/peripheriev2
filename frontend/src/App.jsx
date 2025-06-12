@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
@@ -41,7 +40,20 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
-    <ToastContainer />
+    <ToastContainer
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      toastClassName="retro-toast"
+      bodyClassName="retro-toast-body"
+      progressClassName="retro-toast-progress"
+    />
     </>
   );
 }

@@ -21,6 +21,6 @@ export const interactiveExtrasConfig = [
     x: 700,
     y: 320,
     scale: 1,
-    message: "Un rideau bouge légèrement, comme agité par un souffle passé."
+    message: "Le rideau bouge légèrement, un léger courant d'air parcourt la pièce."
   }
 ];

@@ -1,89 +1,90 @@
-import { createContext, useState, useContext, useEffect } from "react";
-import { login as loginService, register as registerService, logout as logoutService } from "../services/authService";
-import { useNavigate } from "react-router-dom";
+import { createContext, useState, useContext,useEffect } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 
-// Créer un contexte pour l'authentification
-const AuthContext = createContext();
+// Création du contexte utilisateur
+export const AuthContext = createContext();
 
-// Créer un hook personnalisé pour accéder au contexte
-export const useAuth = () => useContext(AuthContext);
-
-// Créer le AuthProvider pour gérer l'état d'authentification
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // utilisateur actuel
-  const [loading, setLoading] = useState(true); //chargement initial
-  const [profile, setProfile] = useState(null);
-  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-    // Chargement initial depuis localStorage
-    useEffect(() => {
-      const token = localStorage.getItem("token");
+  // Vérifie si un utilisateur est déjà connecté (localStorage)
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
 
-      if (!token || isTokenExpired(token)) {
-        localStorage.removeItem("token");
-        setUser(null);
-        setProfile(null);
-        setLoading(false);
-        return;
-      }
-    }, [navigate]);
-
-  // Fonction pour se connecter/connexion via API
+  // Connexion avec fetch
   const login = async (email, password, captchaToken) => {
     console.log("AuthContext + login()", email, password, captchaToken);
     try {
-      const { token, user } = await loginService({ email, password, captchaToken  });
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
-        setUser(user);
-    } catch (err) {
-      console.error("AuthContext -> erreur login: ", err.response?.data || err.message);
-      throw err;
-    }
-  };
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ email, password, captchaToken })
+      });
 
-  // Fonction pour s'inscrire - via API
-  const register = async ({ username, email, password, captchaToken }) => {
-    try {
-      const { token, user } = await registerService({ username, email, password, captchaToken });
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.message || "Erreur lors de la connexion");
+      }
+
+      const data = await response.json();
+      const { token, user } = data;
+
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       setUser(user);
     } catch (err) {
-      console.error("Erreur complète backend register():", err);
-      if (err.response) {
-        console.error("Status:", err.response.status);
-        console.error("Data:", err.response.data);
-      }
-      throw new Error(err.response?.data?.message || "Échec de l'inscription.");
+      console.error("AuthContext -> erreur login: ", err.message);
+      throw err;
     }
   };
 
-  function isTokenExpired(token) {
+  // Inscription avec fetch
+  const register = async ({ username, email, password, captchaToken }) => {
     try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      const now = Date.now() / 1000;
-      return payload.exp < now;
-    } catch {
-      return true;
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ username, email, password, captchaToken })
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.message || "Erreur lors de l'inscription");
+      }
+
+      const data = await response.json();
+      const { token, user } = data;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user);
+    } catch (err) {
+      console.error("AuthContext -> erreur register: ", err.message);
+      throw err;
     }
-  }
-
-
-  // Fonction pour se déconnecter
-  const logout = () => {
-    logoutService();
-    setUser(null);  // Effacer l'utilisateur de l'état
-    localStorage.removeItem("user");  // Supprimer l'utilisateur du localStorage
   };
 
-  // // Vérifier si un utilisateur est connecté
-  // const value = { user, login, register, logout, isAuthenticated: !!user };
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+  };
 
   return (
-  <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, register, logout, profile }}>
-    {!loading && children}
-  </AuthContext.Provider>
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, register, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
+
+export const useAuth = () => useContext(AuthContext);

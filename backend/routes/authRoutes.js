@@ -1,6 +1,5 @@
 import express from 'express';
 import { register, login, verifyToken } from '../controllers/authController.js';
-import { getUserProfile } from '../controllers/userController.js';
 import rateLimit from "express-rate-limit";
 
 const router = express.Router(); // Créer un routeur Express
@@ -21,14 +20,5 @@ router.post('/register', register);
 
 // Route pour la connexion
 router.post('/login', loginLimiter, login);
-
-// Route protégée pour récupérer le profil utilisateur
-router.get('/profile', verifyToken, getUserProfile);
-    // OU --> // router.get('/profile', verifyToken, (req, res) => {
-//     res.json({
-//       message: 'Accès au profil utilisateur réussi',
-//       userId: req.user.userId, // Information récupérée du JWT
-//     });
-//   });
 
 export default router;

@@ -10,6 +10,8 @@ import gameRoutes from './routes/gameRoutes.js';
 config();
 connectDB();
 
+console.log("authRoutes.js bien importé");
+
 const app = express();
 
 app.use(cors({
