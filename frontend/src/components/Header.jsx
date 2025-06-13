@@ -1,9 +1,8 @@
-import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Header() { 
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
   const navigate = useNavigate(); // Hook pour naviguer dynamiquement
   // const [showMenu, setShowMenu] = useState(false);
 
@@ -38,6 +37,9 @@ function Header() {
               <NavLink to="/gameuniverse">Univers du jeu</NavLink>
               <NavLink to="/news">Actualites</NavLink>
               <NavLink to="/dashboard">Dashboard</NavLink>
+                {user?.role === 'admin' && (
+                  <NavLink to="/admin" className="text-[#00ff9f]">Admin</NavLink>
+                )}
               <button onClick={handleLogout}>Déconnexion</button>
             </>
           )}

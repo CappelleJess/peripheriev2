@@ -9,7 +9,6 @@ export default class BootScene extends Phaser.Scene {
     // Images
     this.load.image('background', 'assets/backgrounds/room.png');
     // Assets
-    this.load.image('flower_glow', 'assets/images/flower_glow.png');
     this.load.image('icon_examine', 'assets/images/icon_examine.png');
     this.load.image('icon_smell', 'assets/images/icon_smell.png');
     this.load.image('icon_ignore', 'assets/images/icon_ignore.png');

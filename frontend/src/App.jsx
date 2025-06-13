@@ -16,6 +16,8 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import { ToastContainer } from 'react-toastify';
 
+import AdminDashboard from './pages/AdminDashboard';
+
 function App() {
   return (
     <>
@@ -35,6 +37,8 @@ function App() {
         {/* Routes protégées */}
         <Route path="dashboard" element={<PrivateRoute element={<Dashboard />} />}/>
         <Route path="settings" element={<PrivateRoute element={<Settings />} />}/>
+
+        <Route path="/admin" element={<PrivateRoute requiredRole="admin"><AdminDashboard /></PrivateRoute>} />
 
         {/* Route 404 */}
         <Route path="*" element={<NotFound />} />

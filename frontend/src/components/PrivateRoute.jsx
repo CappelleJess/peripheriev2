@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 /**
@@ -6,10 +6,27 @@ import { useAuth } from "../contexts/AuthContext";
  * Si l'utilisateur est connecté, affiche le composant donné.
  * Sinon, redirige vers /login.
  */
-function PrivateRoute({ element }) {
-  const { isAuthenticated } = useAuth();
+function PrivateRoute({ children, requiredRole }) {
+  const { user, isAuthenticated } = useAuth();
+  const location = useLocation();
 
-  return isAuthenticated ? element : <Navigate to="/login" replace />;
+  // Pendant le chargement
+  if (user === null) {
+    return <div>Chargement...</div>;
+  }
+
+  // Si non connecté
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  // Si un rôle est requis mais ne correspond pas
+  if (requiredRole && user?.role !== requiredRole) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // Tout est OK
+  return children;
 }
 
 export default PrivateRoute;
