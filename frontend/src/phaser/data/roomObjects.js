@@ -21,7 +21,7 @@ export const memoryObjectsConfig = [
     }
   },
   {
-    key: 'frame1',
+    key: 'frame',
     sprite: 'frame',
     x: 300,
     y: 360,
@@ -55,8 +55,8 @@ export const memoryObjectsConfig = [
     }
   },
   {
-    key: 'crt',
-    sprite: 'crt',
+    key: 'computer',
+    sprite: 'computer',
     x: 470,
     y: 480,
     scale: 1,
@@ -76,7 +76,7 @@ export const memoryObjectsConfig = [
     }
   },
   {
-    key: 'lavaLamp',
+    key: 'lavalamp',
     sprite: 'lamp',
     x: 700,
     y: 380,
@@ -97,8 +97,8 @@ export const memoryObjectsConfig = [
     }
   },
   {
-    key: 'cdPlayer',
-    sprite: 'cdplayer',
+    key: 'diskman',
+    sprite: 'diskman',
     x: 420,
     y: 520,
     scale: 1,

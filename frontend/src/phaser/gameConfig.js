@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import MenuScene from './scenes/MenuScene';
 import HelpScene from './scenes/HelpScene';
 import RoomScene from './scenes/RoomScene';
+import BootScene from './scenes/BootScene';
 
 const gameConfig = {
   type: Phaser.AUTO,
@@ -9,7 +10,7 @@ const gameConfig = {
   height: 724,
   parent: 'phaser-container',
   backgroundColor: '#1b1f3b',
-  scene: [MenuScene, HelpScene, RoomScene],
+  scene: [BootScene, MenuScene, RoomScene, HelpScene],
   physics: {
     default: 'arcade',
     arcade: {

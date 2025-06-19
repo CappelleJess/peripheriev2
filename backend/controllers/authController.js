@@ -117,8 +117,8 @@ const register = async (req, res) => {
     console.log("Profil lié sauvegardé :", newProfile);
 
     // Créer un token JWT pour l'utilisateur
-    const token = sign({ userId: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
+    const token = sign({ userId: User._id, role: User.roles[0]  }, process.env.JWT_SECRET, {
+      expiresIn: '10h',
     });
 
     // Renvoyer le token et l'objet user (attendu par le frontend)

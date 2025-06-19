@@ -3,11 +3,12 @@ import Asset from '../models/Assets.js';
 // POST /api/assets
 export const createAsset = async (req, res) => {
   try {
+    console.log("Requête reçue :", req.body);
     const asset = new Asset(req.body);
     await asset.save();
     res.status(201).json(asset);
   } catch (error) {
-    console.error('Erreur création asset :', error);
+    console.error('Erreur création asset :', error.message);
     res.status(500).json({ message: "Échec de création d'asset" });
   }
 };

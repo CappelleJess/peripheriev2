@@ -20,26 +20,31 @@ function Header() {
           </div>
         </NavLink>
 
-        <nav className="nav-links">
+        <nav className="nav-links items-center">
           {!isAuthenticated ? ( 
             <>
               <NavLink to="/">Accueil</NavLink>
               <NavLink to="/play">Jouer</NavLink>
               <NavLink to="/gameuniverse">Univers du jeu</NavLink>
               <NavLink to="/news">Actualites</NavLink>
+              <NavLink to="/about">À propos</NavLink>
               <NavLink to="/login">Connexion</NavLink>
               <NavLink to="/register">Inscription</NavLink>
             </>
           ) : (
             <>
               <NavLink to="/">Accueil</NavLink>
-              <NavLink to="/play">Jouer</NavLink>
-              <NavLink to="/gameuniverse">Univers du jeu</NavLink>
-              <NavLink to="/news">Actualites</NavLink>
-              <NavLink to="/dashboard">Dashboard</NavLink>
-                {user?.role === 'admin' && (
-                  <NavLink to="/admin" className="text-[#00ff9f]">Admin</NavLink>
-                )}
+              {user?.role === 'user' && (
+                <>
+                  <NavLink to="/play">Jouer</NavLink>
+                  <NavLink to="/gameuniverse">Univers du jeu</NavLink>
+                  <NavLink to="/news">Actualites</NavLink>
+                  <NavLink to="/dashboard">Dashboard</NavLink>
+                </>
+              )}
+              {user?.role === 'admin' && (
+                <NavLink to="/admin" className="text-[#00ff9f]">Admin</NavLink>
+              )}
               <button onClick={handleLogout}>Déconnexion</button>
             </>
           )}

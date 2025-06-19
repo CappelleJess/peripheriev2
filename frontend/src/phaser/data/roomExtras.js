@@ -2,22 +2,22 @@ export const interactiveExtrasConfig = [
   {
     key: 'chair',
     sprite: 'chair',
-    x: 200,
-    y: 450,
+    x: 792,
+    y: 550,
     scale: 1,
     message: "Une chaise vide, tournée vers la fenêtre."
   },
   {
     key: 'desk',
     sprite: 'desk',
-    x: 360,
-    y: 500,
+    x: 812,
+    y: 341,
     scale: 1,
     message: "Le bureau est recouvert de vieilles feuilles jaunies."
   },
   {
-    key: 'curtain',
-    sprite: 'curtain',
+    key: 'window',
+    sprite: 'window',
     x: 700,
     y: 320,
     scale: 1,

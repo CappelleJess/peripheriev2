@@ -5,6 +5,7 @@ import App from "./App";
 import { AuthProvider } from "./contexts/AuthContext"; 
 import "./styles/style.css";
 import './tailwind.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 /**
  * Point d’entrée de l’application.

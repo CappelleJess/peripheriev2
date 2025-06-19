@@ -1,4 +1,3 @@
-import React from "react";
 import FenetrePage from "../components/FenetrePage";
 
 function GameUniverse() {

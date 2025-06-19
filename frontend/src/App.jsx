@@ -9,6 +9,7 @@ import Settings from "./pages/Settings";
 import Actualites from "./pages/Actualites";
 import Play from "./pages/Play";
 import GameUniverse from "./pages/GameUniverse";
+import About from "./pages/About";
 
 import Layout from "./components/Layout";
 import PublicRoute from "./components/PublicRoute";
@@ -33,9 +34,10 @@ function App() {
         {/* Routes publiques */}
         <Route path="gameuniverse" element={<PublicRoute element={<GameUniverse />} path="/gameuniverse" />}/>
         <Route path="news" element={<PublicRoute element={<Actualites />} path="/news" />}/>
+        <Route path="about" element={<PublicRoute element={<About />} path="/about" />}/>
 
         {/* Routes protégées */}
-        <Route path="dashboard" element={<PrivateRoute element={<Dashboard />} />}/>
+        <Route path="dashboard" element={<PrivateRoute requiredRole='user' element={<Dashboard />} />}/>
         <Route path="settings" element={<PrivateRoute element={<Settings />} />}/>
 
         <Route path="/admin" element={<PrivateRoute requiredRole="admin"><AdminDashboard /></PrivateRoute>} />
