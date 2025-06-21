@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/style.css";
 
 const phrases = [
@@ -7,12 +8,20 @@ const phrases = [
   "Connexion établie.",
 ];
 
-function IntroTerminal({ onFinish }) {
+function IntroTerminal() {
   const [displayedText, setDisplayedText] = useState("");
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const alreadyPlayed = sessionStorage.getItem("introDone");
+
+    if (alreadyPlayed === "true") {
+      navigate("/dashboard"); // On saute l’intro
+      return;
+    }
+
     if (currentPhraseIndex < phrases.length) {
       const phrase = phrases[currentPhraseIndex];
 
@@ -31,11 +40,10 @@ function IntroTerminal({ onFinish }) {
         return () => clearTimeout(pause);
       }
     } else {
-      // Fin de l’intro → appelle le callback (ex: pour afficher Homepage)
-      const done = setTimeout(onFinish, 800);
+      const done = setTimeout(() => navigate('/dashboard'), 800); // redirection auto
       return () => clearTimeout(done);
     }
-  }, [charIndex, currentPhraseIndex, onFinish]);
+  }, [charIndex, currentPhraseIndex, navigate]);
 
   return (
     <div className="terminal-intro pixel-font">

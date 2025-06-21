@@ -14,6 +14,7 @@ import About from "./pages/About";
 import Layout from "./components/Layout";
 import PublicRoute from "./components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
+import IntroTerminal from './components/IntroTerminal';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -23,8 +24,8 @@ function App() {
   return (
     <>
     <Routes>
+      <Route path="/intro" element={<IntroTerminal />} />
       <Route path="play" element={<Play />} />
-      {/* <Route path="play" element={<PublicRoute element={<Play />} path="/play" />}/> */}
 
       <Route element={<Layout />}>
         <Route index element={<Homepage />} />

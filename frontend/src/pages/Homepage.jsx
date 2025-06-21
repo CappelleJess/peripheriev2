@@ -1,15 +1,9 @@
-import { useState } from "react";
-import IntroTerminal from "../components/IntroTerminal";
 import FenetrePage from "../components/FenetrePage";
 
 function Homepage() {
-  const [introDone, setIntroDone] = useState(false);
 
   return (
     <>
-      {!introDone ? (
-        <IntroTerminal onFinish={() => setIntroDone(true)} />
-      ) : (
           <FenetrePage titre="Bienvenue dans Périphérie">
           <p>
             <strong>*Périphérie*</strong> est une aventure narrative centrée sur l’introspection, les souvenirs et les liens au passé. Vous explorez une chambre où chaque objet raconte une histoire oubliée.
@@ -30,7 +24,6 @@ function Homepage() {
             À vous de reconstruire le fil de vos souvenirs. Rien n’est figé… sauf peut-être le passé.
           </p>
         </FenetrePage>
-      )}
     </>
   );
 }

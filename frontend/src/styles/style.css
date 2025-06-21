@@ -189,9 +189,21 @@ form p {
   box-shadow: 0 -2px 10px #00ff9f33;
 }
 
-.crt-text {
-  margin: 0.3rem 0;
-  text-shadow: 0 0 2px #00ff9f, 0 0 10px #00ff9f33;
+.glitched-text {
+  position: relative;
+  color: #00ff9f;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  text-shadow:
+    2px 0 red,
+    -2px 0 blue;
+  animation: glitch 0.5s infinite;
+}
+
+@keyframes glitch {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
 }
 
 /* ========== RESPONSIVE ========== */

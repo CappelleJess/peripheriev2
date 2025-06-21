@@ -45,7 +45,7 @@ function Login() {
 
           await login(email, password, captchaToken);
           console.log("Connexion réussie, redirection...");
-          navigate("/dashboard");
+          navigate("/intro");
         } catch (err) {
           console.error("Erreur lors du login ou reCAPTCHA :", err);
           setError("Échec de la connexion ou du CAPTCHA.");
