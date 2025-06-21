@@ -1,5 +1,3 @@
-
-
 function AssetTable({ assets, onEdit, onDelete }) {
   return (
     <table className="w-full table-auto border-collapse text-white">

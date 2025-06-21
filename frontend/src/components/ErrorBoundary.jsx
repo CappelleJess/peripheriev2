@@ -7,7 +7,7 @@ class ErrorBoundary extends Component {
   }
 
   static getDerivedStateFromError() {
-    // Mettre à jour l’état pour afficher l’UI de repli
+    // MaJ pour afficher l’UI de repli
     return { hasError: true };
   }
 

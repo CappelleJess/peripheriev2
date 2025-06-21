@@ -7,7 +7,11 @@ function getRandomDate(fromYear = 1990, toYear = 2007) {
 
 function Footer() {
   const fakeDate = getRandomDate();
-  const formattedDate = fakeDate.toLocaleDateString();
+  const formattedDate = fakeDate.toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
   const quotes = [
     "Fichier mémoire : Périphérie",
     "Système : PÉRIPHÉRIE.ARCHIVE",

@@ -10,7 +10,7 @@ function Login() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const { login } = useAuth();  // Utiliser le hook du contexte Auth
+  const { login } = useAuth();
 
   // Charge le script reCAPTCHA v3 si absent
   useEffect(() => {

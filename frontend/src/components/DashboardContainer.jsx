@@ -56,7 +56,6 @@ const DashboardContainer = () => {
       });
   }, []);
 
-  // Ouvre une fenêtre par défaut une fois le profil chargé
   useEffect(() => {
     if (profil && fenetres.length === 0) {
       toggleFenetre('profil', 'Mon Profil');
@@ -67,7 +66,6 @@ const DashboardContainer = () => {
     setFenetres(fenetres.filter(f => f.id !== id));
   };
 
-  // Rendu du contenu selon le type
     const getContenu = (type) => {
       // Garde-fou global - protection de l'accès 
       if (!profil) return <ChargementRetro message="Chargement des souvenirs..." />;

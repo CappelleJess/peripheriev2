@@ -5,6 +5,7 @@ export const memoryObjectsConfig = [
     x: 512,
     y: 384,
     scale: 1,
+    unlockKey: 'flower',
     choices: {
       examiner: {
         text: "Cette fleur te rappelle un souvenir agréable de l’époque où tout semblait plus simple.",
@@ -26,6 +27,7 @@ export const memoryObjectsConfig = [
     x: 300,
     y: 360,
     scale: 1,
+    unlockKey: 'frame',
     choices: {
       examiner: {
         text: "Un cadre photo usé... Tu reconnais à peine les visages, mais une ambiance familière en émane.",
@@ -43,6 +45,7 @@ export const memoryObjectsConfig = [
     x: 470,
     y: 480,
     scale: 1,
+    unlockKey: 'book',
     choices: {
       examiner: {
         text: "Un carnet griffonné de souvenirs, d’esquisses, de mots oubliés.",
@@ -60,6 +63,7 @@ export const memoryObjectsConfig = [
     x: 470,
     y: 480,
     scale: 1,
+    unlockKey: 'computer',
     choices: {
       allumer: {
         text: "L'écran s'allume dans un cliquetis. Une lumière pâle, des formes familières... comme un rêve éveillé.",
@@ -81,6 +85,7 @@ export const memoryObjectsConfig = [
     x: 700,
     y: 380,
     scale: 1,
+    unlockKey: 'lavalamp',
     choices: {
       examiner: {
         text: "Les bulles de cire montent et redescendent, lentes et hypnotiques.",
@@ -102,6 +107,7 @@ export const memoryObjectsConfig = [
     x: 420,
     y: 520,
     scale: 1,
+    unlockKey: 'diskman',
     choices: {
       ecouter: {
         text: "Une piste démarre. Tu reconnais les premières notes, et ton cœur se serre.",
@@ -123,18 +129,19 @@ export const memoryObjectsConfig = [
     x: 300,
     y: 280,
     scale: 1,
+    unlockKey: 'poster',
     choices: {
       examiner: {
         text: "Un poster abîmé. Tu te souviens de l’avoir fixé là, un été.",
-      scores: { souvenir: 1, ancrage: 2, emergence: 1 }
+        scores: { souvenir: 1, ancrage: 2, emergence: 1 }
       },
-      retirer : {
+      retirer: {
         text: "Tu décroches le poster. Derrière, un petit mot griffonné apparaît.",
         scores: { nostalgie: 2, emergence: 2 }
       },
       ignorer: {
-          text: "Tu ne regardes pas. C’est trop flou, trop loin.",
-          scores: { ancrage: -1 }
+        text: "Tu ne regardes pas. C’est trop flou, trop loin.",
+        scores: { ancrage: -1 }
       }
     }
   },
@@ -144,19 +151,20 @@ export const memoryObjectsConfig = [
     x: 500,
     y: 600,
     scale: 1,
+    unlockKey: 'rug',
     choices: {
       lever: {
         text: "Sous le tapis, une tache que tu avais essayer de cacher, elle a l'air d'avoir changé.",
         scores: { souvenir: 1, nostalgie: 1, emergence: 2 }
       },
-        assis: {
-          text: "Tu t’assieds sur le tapis. Une position familière. Tu fermes les yeux.",
-          scores: { ancrage: 2, emergence: 1 }
-        },
-        ignorer: {
-          text: "Tu ne regardes même pas ce tapis, ni ce qu’il cache.",
-          scores: { souvenir: -1 }
-        }
+      assis: {
+        text: "Tu t’assieds sur le tapis. Une position familière. Tu fermes les yeux.",
+        scores: { ancrage: 2, emergence: 1 }
+      },
+      ignorer: {
+        text: "Tu ne regardes même pas ce tapis, ni ce qu’il cache.",
+        scores: { souvenir: -1 }
+      }
     }
   }
 ];

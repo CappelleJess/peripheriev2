@@ -1,22 +1,113 @@
 {
-  "examinerObjet": {
-    "souvenirScore": 10,
-    "ancragePasse": -5,
-    "emergenceNostalgie": 7
+  "examiner_flower": {
+    "souvenirScore": 1,
+    "ancragePasse": 1,
+    "emergenceNostalgie": 1,
+    "unlockAssetKey": "flower"
   },
-  "sentirObjet": {
-    "souvenirScore": 5,
-    "ancragePasse": 0,
-    "emergenceNostalgie": 10
-  },
-  "ignorerObjet": {
-    "souvenirScore": -2,
+  "sentir_flower": {
+    "souvenirScore": 2,
     "ancragePasse": 2,
-    "emergenceNostalgie": 0
+    "unlockAssetKey": "flower"
   },
-  "ouvrirBoite": {
-    "souvenirScore": 15,
-    "ancragePasse": 5,
-    "emergenceNostalgie": 12
+  "ignorer_flower": {
+    "ancragePasse": -1,
+    "unlockAssetKey": "flower"
+  },
+  "examiner_frame": {
+    "souvenirScore": 2,
+    "emergenceNostalgie": 2,
+    "unlockAssetKey": "frame"
+  },
+  "ignorer_frame": {
+    "ancragePasse": -2,
+    "unlockAssetKey": "frame"
+  },
+  "examiner_book": {
+    "souvenirScore": 3,
+    "emergenceNostalgie": 1,
+    "unlockAssetKey": "book"
+  },
+  "ignorer_book": {
+    "ancragePasse": -1,
+    "unlockAssetKey": "book"
+  },
+  "allumer_computer": {
+    "souvenirScore": 2,
+    "emergenceNostalgie": 2,
+    "ancragePasse": 0,
+    "unlockAssetKey": "computer"
+  },
+  "examiner_computer": {
+    "ancragePasse": 1,
+    "unlockAssetKey": "computer"
+  },
+  "ignorer_computer": {
+    "ancragePasse": -1,
+    "unlockAssetKey": "computer"
+  },
+  "examiner_lavalamp": {
+    "emergenceNostalgie": 2,
+    "unlockAssetKey": "lavalamp"
+  },
+  "toucher_lavalamp": {
+    "souvenirScore": 1,
+    "ancragePasse": 1,
+    "emergenceNostalgie": 1,
+    "unlockAssetKey": "lavalamp"
+  },
+  "ignorer_lavalamp": {
+    "emergenceNostalgie": -1,
+    "unlockAssetKey": "lavalamp"
+  },
+  "ecouter_diskman": {
+    "souvenirScore": 2,
+    "emergenceNostalgie": 3,
+    "unlockAssetKey": "diskman"
+  },
+  "ejecter_diskman": {
+    "ancragePasse": 1,
+    "unlockAssetKey": "diskman"
+  },
+  "ignorer_diskman": {
+    "emergenceNostalgie": -2,
+    "unlockAssetKey": "diskman"
+  },
+  "examiner_poster": {
+    "souvenirScore": 1,
+    "ancragePasse": 2,
+    "emergenceNostalgie": 1,
+    "unlockAssetKey": "poster"
+  },
+  "retirer_poster": {
+    "emergenceNostalgie": 2,
+    "unlockAssetKey": "poster"
+  },
+  "ignorer_poster": {
+    "ancragePasse": -1,
+    "unlockAssetKey": "poster"
+  },
+  "lever_rug": {
+    "souvenirScore": 1,
+    "emergenceNostalgie": 2,
+    "unlockAssetKey": "rug"
+  },
+  "assis_rug": {
+    "ancragePasse": 2,
+    "emergenceNostalgie": 1,
+    "unlockAssetKey": "rug"
+  },
+  "ignorer_rug": {
+    "souvenirScore": -1,
+    "unlockAssetKey": "rug"
+  },
+  "default_chair": {
+    "unlockAssetKey": "chair"
+  },
+  "default_desk": {
+    "unlockAssetKey": "desk"
+  },
+  "default_window": {
+    "unlockAssetKey": "window"
   }
 }

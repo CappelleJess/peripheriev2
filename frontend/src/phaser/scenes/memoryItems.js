@@ -65,8 +65,11 @@ export function createMemoryObject(scene, config) {
           if (user?._id) {
             try {
               await api.post(`/game/choices/${user._id}`, {
-                objectKey: key,
-                choice: choiceKey
+                choice: {
+                  objectKey: key, choiceKey,
+                  unlockAssetKey: config.unlockKey,
+                  impactOnStory: scores
+                }
               });
               console.log("Interaction enregistrée côté backend :", key, choiceKey);
             } catch (err) {

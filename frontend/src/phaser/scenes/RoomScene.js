@@ -183,7 +183,7 @@ export default class RoomScene extends Phaser.Scene {
       const profile = await response.json();
       console.log("Profil chargé depuis le backend :", profile);
 
-      // Exemples d'utilisation des données
+      // Utilisation des données
       this.displayName = profile.displayName;
       this.souvenirScore = profile.souvenirScore;
       this.ancragePasse = profile.ancragePasse;

@@ -10,6 +10,17 @@ body {
   background-size: 5px 5px;
 }
 
+.redacted {
+  color: transparent;
+  background-color: #33ff33;
+  border-radius: 2px;
+  padding: 0 4px;
+  font-family: monospace;
+  user-select: none;
+  text-shadow: none;
+  position: relative;
+}
+
 /* Effet CRT */
 body::after {
   content: "";
@@ -106,34 +117,34 @@ canvas {
   color: #e60073;
 }
 
-.dropdown-menu {
+.dropdown-content {
   display: flex;
-  flex-direction: column;
-  background-color: #6b728e;
-  padding: 1rem;
+  flex-direction: column; 
   position: absolute;
-  top: 100%;
-  right: 0;
-  width: 200px;
-  border-left: 2px solid #9b5de5;
-  border-bottom: 2px solid #9b5de5;
+  background-color: #1b1f3b;
+  border: 1px solid #00ff9f;
+  z-index: 10;
+  padding: 0.5rem 0;
+  min-width: 240px;
+  box-shadow: 0px 0px 6px #00ff9f55;
 }
 
-.dropdown-menu a,
-.dropdown-menu button {
-  color: #d6c7ae;
-  margin-bottom: 0.5rem;
-  text-align: left;
+.dropdown-item {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #faf3e0;
   background: none;
   border: none;
-  font-family: inherit;
-  font-size: 1rem;
-  text-decoration: none;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  cursor: pointer;
+  font-size: 12px;
+  border-bottom: 1px dashed #00ff9f44;
 }
 
-.dropdown-menu a:hover,
-.dropdown-menu button:hover {
-  color: #00ff9f;
+.dropdown-item:hover {
+  background-color: #4a90e2;
+  color: #1b1f3b;
 }
 
 /* ========== MAIN / FORMULAIRES ========== */
@@ -249,17 +260,6 @@ form p {
 
 /* ========== INTRODUCTION TERMINAL ========== */
 
-.pixel-font {
-  font-family: 'Press Start 2P', monospace !important;
-}
-
-.titre-retro {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  text-shadow: 0 0 2px #00ff9f;
-}
-
 .terminal-intro {
   font-family: 'Press Start 2P', monospace !important;
   font-size: 1.1rem;
@@ -271,14 +271,16 @@ form p {
   padding: 2rem;
   margin: 4rem auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   text-shadow: 0 0 4px #33ff33;
   border: 1px solid #33ff33;
   border-radius: 8px;
   box-shadow: 0 0 12px #33ff33aa;
   width: 70%;
   max-width: 900px;
+  overflow-y: auto;
 }
 
 .cursor {

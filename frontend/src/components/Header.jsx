@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import DropdownMenu from "./DropdownMenu";
 
 function Header() { 
   const { isAuthenticated, logout, user } = useAuth();
@@ -33,11 +34,18 @@ function Header() {
             </>
           ) : (
             <>
-              <NavLink to="/">Accueil</NavLink>
+              <NavLink to="/">Entrée</NavLink>
               {user?.role === 'user' && (
                 <>
                   <NavLink to="/play">Jouer</NavLink>
-                  <NavLink to="/gameuniverse">Univers du jeu</NavLink>
+                  <DropdownMenu title="Univers du jeu" items={[
+                    { label: "[ NOEUDS : MÉMOIRE ]", route: "/gameuniverse" },
+                    { label: "[ INVENTAIRE MÉMORIEL ]", route: "/reliques" },
+                    { label: "[ JOURNAL DE DÉRIVE ]", route: "/fragments" },
+                    { label: "[ PROFIL ALTÉRÉ ]", route: "/bios" },
+                    { label: "[ CLAUSES D’EXISTENCE ]", route: "/mentions-legales" },
+                    { label: "[ CONSOLE DE L’ÉCHO ]", route: "/log" },
+                  ]}/>
                   <NavLink to="/news">Actualites</NavLink>
                   <NavLink to="/dashboard">Dashboard</NavLink>
                 </>
@@ -49,31 +57,7 @@ function Header() {
             </>
           )}
         </nav>
-
-        {/* <button
-          className="menu-button"
-          onClick={() => setShowMenu(!showMenu)}
-        >
-          ≡
-        </button> */}
       </div>
-
-      {/* {showMenu && (
-        <div className="dropdown-menu">
-          {!isAuthenticated ? (
-            <>
-              <NavLink to="/login">Connexion</NavLink>
-              <NavLink to="/register">Inscription</NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <NavLink to="/settings">Paramètres</NavLink>
-              <button onClick={handleLogout}>Déconnexion</button>
-            </>
-          )}
-        </div>
-      )} */}
     </header>
   );
 }

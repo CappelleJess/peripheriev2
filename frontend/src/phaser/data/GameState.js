@@ -6,7 +6,7 @@ const GameState = {
   emergenceNostalgie: 0,
 
   interactions: {
-    flower: null, // examine, smell, ignore
+    flower: null,
     frame: null,
     book: null
   },

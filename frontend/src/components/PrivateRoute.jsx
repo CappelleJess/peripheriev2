@@ -1,11 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
-/**
- * Composant pour protéger une route. 
- * Si l'utilisateur est connecté, affiche le composant donné.
- * Sinon, redirection vers /login.
- */
 function PrivateRoute({ element, requiredRole }) {
   const { user, isAuthenticated } = useAuth();
   const location = useLocation();

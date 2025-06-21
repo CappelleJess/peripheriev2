@@ -11,7 +11,6 @@ function Dashboard() {
       <h1 className="text-2xl font-bold text-[#faf3e0] mb-4">
         Tableau de bord
       </h1>
-    {/* Ici le container React avec Profil / Souvenirs */}
     <DashboardContainer />
   </div>
     </FenetreRetro>

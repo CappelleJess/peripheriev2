@@ -9,7 +9,8 @@ const assetSchema = new mongoose.Schema({
   type: { type: String, enum: ['interactive', 'extra'], required: true },
   choices: { type: Object, default: {} },
   message: { type: String, default: '' },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  unlockedBy: [ { type: mongoose.Schema.Types.ObjectId, ref: "Profile" }]
 });
 
 export default mongoose.model('Asset', assetSchema);

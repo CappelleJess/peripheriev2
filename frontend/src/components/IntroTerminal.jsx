@@ -18,7 +18,7 @@ function IntroTerminal() {
     const alreadyPlayed = sessionStorage.getItem("introDone");
 
     if (alreadyPlayed === "true") {
-      navigate("/dashboard"); // On saute l’intro
+      navigate("/dashboard");
       return;
     }
 
@@ -40,7 +40,7 @@ function IntroTerminal() {
         return () => clearTimeout(pause);
       }
     } else {
-      const done = setTimeout(() => navigate('/dashboard'), 800); // redirection auto
+      const done = setTimeout(() => navigate('/dashboard'), 800);
       return () => clearTimeout(done);
     }
   }, [charIndex, currentPhraseIndex, navigate]);

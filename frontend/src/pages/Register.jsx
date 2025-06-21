@@ -73,7 +73,7 @@ function Register() {
 
     const siteKey = "6LeIgEArAAAAAPc76g2D1L-ts6PZ5iNpWW_DtDlO";
 
-    // ATTENDRE que grecaptcha soit *prêt*
+    // ATTENDRE que grecaptcha soit ready
     const captchaToken = await new Promise((resolve, reject) => {
       window.grecaptcha.ready(() => {
         window.grecaptcha.execute(siteKey, { action: "submit" })

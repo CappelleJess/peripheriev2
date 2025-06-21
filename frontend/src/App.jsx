@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
@@ -10,15 +11,13 @@ import Actualites from "./pages/Actualites";
 import Play from "./pages/Play";
 import GameUniverse from "./pages/GameUniverse";
 import About from "./pages/About";
+import AdminDashboard from './pages/AdminDashboard';
+  import Reliques from "./pages/section/Reliques";
 
 import Layout from "./components/Layout";
 import PublicRoute from "./components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import IntroTerminal from './components/IntroTerminal';
-
-import { ToastContainer } from 'react-toastify';
-
-import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -36,6 +35,8 @@ function App() {
         <Route path="gameuniverse" element={<PublicRoute element={<GameUniverse />} path="/gameuniverse" />}/>
         <Route path="news" element={<PublicRoute element={<Actualites />} path="/news" />}/>
         <Route path="about" element={<PublicRoute element={<About />} path="/about" />}/>
+        <Route path="/reliques" element={<Reliques />} />
+        
 
         {/* Routes protégées */}
         <Route path="dashboard" element={<PrivateRoute requiredRole='user' element={<Dashboard />} />}/>
