@@ -461,3 +461,17 @@ button:not(.btn-retro) {
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
+
+/* ====== Glitch ====== */
+@keyframes glitch {
+  0% { transform: translate(0); opacity: 1; }
+  20% { transform: translate(-1px, 1px); opacity: 0.8; }
+  40% { transform: translate(1px, -1px); opacity: 1; }
+  60% { transform: translate(-1px, 1px); opacity: 0.9; }
+  80% { transform: translate(1px, 0); opacity: 0.8; }
+  100% { transform: translate(0); opacity: 1; }
+}
+
+.animate-glitch {
+  animation: glitch 1s infinite;
+}

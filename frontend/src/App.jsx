@@ -9,11 +9,14 @@ import NotFound from "./pages/NotFound";
 import Settings from "./pages/Settings";
 import Actualites from "./pages/Actualites";
 import Play from "./pages/Play";
-import GameUniverse from "./pages/GameUniverse";
+import Codex from "./pages/Codex";
 import About from "./pages/About";
 import AdminDashboard from './pages/AdminDashboard';
   import Reliques from "./pages/section/Reliques";
   import Fragments from "./pages/section/Fragments";
+  import Bios from "./pages/section/Bios";
+  import MentionsLegales from "./pages/section/MentionsLegales";
+  import Logs from "./pages/section/Logs";
 
 import Layout from "./components/Layout";
 import PublicRoute from "./components/PublicRoute";
@@ -33,11 +36,14 @@ function App() {
         <Route path="register" element={<Register />} />
 
         {/* Routes publiques */}
-        <Route path="gameuniverse" element={<PublicRoute element={<GameUniverse />} path="/gameuniverse" />}/>
+        <Route path="codex" element={<PublicRoute element={<Codex />} path="/codex" />}/>
         <Route path="news" element={<PublicRoute element={<Actualites />} path="/news" />}/>
         <Route path="about" element={<PublicRoute element={<About />} path="/about" />}/>
         <Route path="/reliques" element={<Reliques />} />
         <Route path="/fragments" element={<Fragments />} />
+        <Route path="/bios" element={<Bios />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/logs" element={<Logs />} />
         
 
         {/* Routes protégées */}

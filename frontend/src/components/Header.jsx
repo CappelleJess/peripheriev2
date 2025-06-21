@@ -26,7 +26,6 @@ function Header() {
             <>
               <NavLink to="/">Accueil</NavLink>
               <NavLink to="/play">Jouer</NavLink>
-              <NavLink to="/gameuniverse">Univers du jeu</NavLink>
               <NavLink to="/news">Actualites</NavLink>
               <NavLink to="/about">À propos</NavLink>
               <NavLink to="/login">Connexion</NavLink>
@@ -37,16 +36,13 @@ function Header() {
               <NavLink to="/">Entrée</NavLink>
               {user?.role === 'user' && (
                 <>
-                  <NavLink to="/play">Jouer</NavLink>
-                  <NavLink to="/news">Actualites</NavLink>
-                  <NavLink to="/dashboard">Dashboard</NavLink>
-                  <DropdownMenu title="Univers du jeu" items={[
-                    { label: "[ NOEUDS : MÉMOIRE ]", route: "/gameuniverse" },
+                  <DropdownMenu title="Codex" items={[
+                    { label: "[ NOEUDS : MÉMOIRE ]", route: "/codex" },
                     { label: "[ INVENTAIRE MÉMORIEL ]", route: "/reliques" },
                     { label: "[ JOURNAL DE DÉRIVE ]", route: "/fragments" },
                     { label: "[ PROFIL ALTÉRÉ ]", route: "/bios" },
                     { label: "[ CLAUSES D’EXISTENCE ]", route: "/mentions-legales" },
-                    { label: "[ CONSOLE DE L’ÉCHO ]", route: "/log" },
+                    { label: "[ CONSOLE DE L’ÉCHO ]", route: "/logs" },
                   ]}/>
                 </>
               )}
