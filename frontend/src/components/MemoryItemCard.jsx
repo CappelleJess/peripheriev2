@@ -1,10 +1,8 @@
 const ICONES_MEMOIRE = {
-  fleur: "🌸",
-  cadre: "🖼️",
-  ordinateur: "🖥️",
-  livre: "📖",
-  photo: "🖼️",
-  lettre: "📜",
+  fleur: "/img/flower.png",
+  cadre: "/img/frame.png",
+  ordinateur: "img/pc.png",
+  journal: "img/diary.png",
 };
 
 const MemoryItemCard = ({ item }) => {

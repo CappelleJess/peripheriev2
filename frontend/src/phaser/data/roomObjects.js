@@ -6,15 +6,15 @@ export const memoryObjectsConfig = [
     y: 384,
     scale: 1,
     choices: {
-      examine: {
+      examiner: {
         text: "Cette fleur te rappelle un souvenir agréable de l’époque où tout semblait plus simple.",
         scores: { souvenir: 1, ancrage: 1, nostalgie: 1 }
       },
-      smell: {
+      sentir: {
         text: "L'odeur de la fleur t'envahit, apportant avec elle des bribes de souvenirs.",
         scores: { souvenir: 2, ancrage: 2 }
       },
-      ignore: {
+      ignorer: {
         text: "Ce n'est qu'un brin de fleur fâné.",
         scores: { ancrage: -1 }
       }
@@ -27,11 +27,11 @@ export const memoryObjectsConfig = [
     y: 360,
     scale: 1,
     choices: {
-      examine: {
+      examiner: {
         text: "Un cadre photo usé... Tu reconnais à peine les visages, mais une ambiance familière en émane.",
         scores: { souvenir: 2, nostalgie: 2 }
       },
-      ignore: {
+      ignorer: {
         text: "Tu passes devant sans t'arrêter.",
         scores: { ancrage: -2 }
       }
@@ -44,11 +44,11 @@ export const memoryObjectsConfig = [
     y: 480,
     scale: 1,
     choices: {
-      examine: {
+      examiner: {
         text: "Un carnet griffonné de souvenirs, d’esquisses, de mots oubliés.",
         scores: { souvenir: 3, nostalgie: 1 }
       },
-      ignore: {
+      ignorer: {
         text: "Tu inspectes rapidement la couverture, juste un journal sans importance.",
         scores: { ancrage: -1 }
       }
@@ -65,11 +65,11 @@ export const memoryObjectsConfig = [
         text: "L'écran s'allume dans un cliquetis. Une lumière pâle, des formes familières... comme un rêve éveillé.",
         scores: { souvenir: 2, nostalgie: 1, emergence: 2 }
       },
-      examine: {
+      examiner: {
         text: "Tu observes l'écran éteint. Ton reflet t’y regarde en silence.",
         scores: { ancrage: 1 }
       },
-      ignore: {
+      ignorer: {
         text: "Tu laisses l'écran éteint, il ne doit sans doute plus fonctionner. Il reste silencieux, comme figé dans le temps.",
         scores: { ancrage: -1 }
       }
@@ -82,7 +82,7 @@ export const memoryObjectsConfig = [
     y: 380,
     scale: 1,
     choices: {
-      examine: {
+      examiner: {
         text: "Les bulles de cire montent et redescendent, lentes et hypnotiques.",
         scores: { nostalgie: 2, emergence: 2 }
       },
@@ -103,15 +103,15 @@ export const memoryObjectsConfig = [
     y: 520,
     scale: 1,
     choices: {
-      listen: {
+      ecouter: {
         text: "Une piste démarre. Tu reconnais les premières notes, et ton cœur se serre.",
         scores: { nostalgie: 2, souvenir: 2, emergence: 3 }
       },
-      eject: {
+      ejecter: {
         text: "Tu ouvres le lecteur. Un disque gravé, écrit à la main. Tu ne le lis pas.",
         scores: { ancrage: 1 }
       },
-      ignore: {
+      ignorer: {
         text: "Tu coupes le son.",
         scores: { emergence: -2 }
       }
@@ -124,15 +124,15 @@ export const memoryObjectsConfig = [
     y: 280,
     scale: 1,
     choices: {
-      examine: {
+      examiner: {
         text: "Un poster abîmé. Tu te souviens de l’avoir fixé là, un été.",
       scores: { souvenir: 1, ancrage: 2, emergence: 1 }
       },
-      remove : {
+      retirer : {
         text: "Tu décroches le poster. Derrière, un petit mot griffonné apparaît.",
         scores: { nostalgie: 2, emergence: 2 }
       },
-      ignore: {
+      ignorer: {
           text: "Tu ne regardes pas. C’est trop flou, trop loin.",
           scores: { ancrage: -1 }
       }
@@ -145,15 +145,15 @@ export const memoryObjectsConfig = [
     y: 600,
     scale: 1,
     choices: {
-      liftup: {
-        text: "Sous le tapis, une tache que tu croyais oubliée. Une mémoire domestique, banale mais vive.",
+      lever: {
+        text: "Sous le tapis, une tache que tu avais essayer de cacher, elle a l'air d'avoir changé.",
         scores: { souvenir: 1, nostalgie: 1, emergence: 2 }
       },
-        sitdown: {
+        assis: {
           text: "Tu t’assieds sur le tapis. Une position familière. Tu fermes les yeux.",
           scores: { ancrage: 2, emergence: 1 }
         },
-        ignore: {
+        ignorer: {
           text: "Tu ne regardes même pas ce tapis, ni ce qu’il cache.",
           scores: { souvenir: -1 }
         }

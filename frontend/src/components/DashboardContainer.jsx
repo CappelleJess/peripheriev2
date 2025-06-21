@@ -1,41 +1,67 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import FenetreRetro from './FenetreRetro';
 import ProfilUser from './ProfilUser';
 import Souvenirs from './Souvenirs';
-import api from '../utils/api';
+//import api from '../utils/api';
 import ScoreTotal from './ScoreTotal.jsx';
 import ObjetsMemoire from './ObjetsMemoire.jsx';
 import ChargementRetro from './ChargementRetro.jsx';
+
+console.log("Tu charges le bon fichier grosse neuneu");
 
 const DashboardContainer = () => {
   // État pour gérer les fenêtres ouvertes
   const [fenetres, setFenetres] = useState([]);
 
   // État pour gérer le profil et son setter
-  const [profil, setProfil] = useState(null);
+  const [profil, setProfil] = useState({  displayName: 'Test',
+  souvenirScore: 0,
+  ancragePasse: 0,
+  emergenceNostalgie: 0,
+  score: 0,
+  objetsDebloques: [],
+  lastLoginDate: new Date().toISOString()
+});
 
-  // Charger les données du profil utilisateur
+  const toggleFenetre = useCallback((type, titre) => {
+    setFenetres((fenetres) => {
+      const fenetreOuverte = fenetres.find(f => f.type === type);
+      return fenetreOuverte 
+        ? fenetres.filter(f => f.type !== type) 
+        : [...fenetres, { id: Date.now(), type, titre }];
+    });
+  }, []);
+
+  // Chargement des données du profil utilisateur
   useEffect(() => {
-    api.get('/profile')
+    console.log("Tentative d'appel à /profile avec FETCH GODDAMMIT");
+    const token = localStorage.getItem('token');
+    fetch('http://localhost:5000/api/profile', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then(res => {
-        console.log("Profil chargé :", res.data);
-        setProfil(res.data);
+        if (!res.ok) {
+          throw new Error(`Erreur HTTP ${res.status}`);
+        }
+        return res.json();
       })
-      .catch((err) => {
+      .then(data => {
+        console.log("Profil chargé :", data);
+        setProfil(data);
+      })
+      .catch(err => {
         console.error("Erreur de chargement du profil :", err.message);
       });
   }, []);
-  
-  const toggleFenetre = (type, titre) => {
-    const existante = fenetres.find(f => f.type === type);
-    if (existante) {
-      // Si elle est déjà ouverte, on la ferme
-      setFenetres(fenetres.filter(f => f.type !== type));
-    } else {
-      // Sinon on l'ajoute
-      setFenetres([...fenetres, { id: Date.now(), type, titre }]);
+
+  // Ouvre une fenêtre par défaut une fois le profil chargé
+  useEffect(() => {
+    if (profil && fenetres.length === 0) {
+      toggleFenetre('profil', 'Mon Profil');
     }
-  };
+  }, [profil, fenetres.length, toggleFenetre]);
 
   const fermerFenetre = (id) => {
     setFenetres(fenetres.filter(f => f.id !== id));
@@ -65,6 +91,7 @@ const DashboardContainer = () => {
     };
 
   return (
+  console.log("Debug :", profil),
   <div className="relative w-full h-auto min-h-screen bg-[#1b1f3b] text-[#faf3e0] p-4 ">
       {/* Barre de boutons */}
       <div className="p-2 flex gap-4 bg-[#3e4161] text-white shadow-md border-b border-[#6b728e]">
@@ -101,5 +128,7 @@ const DashboardContainer = () => {
     </div>
   );
 };
+
+console.log("DashboardContainer monté !");
 
 export default DashboardContainer;

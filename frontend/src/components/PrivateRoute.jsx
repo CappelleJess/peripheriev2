@@ -4,9 +4,9 @@ import { useAuth } from "../contexts/AuthContext";
 /**
  * Composant pour protéger une route. 
  * Si l'utilisateur est connecté, affiche le composant donné.
- * Sinon, redirige vers /login.
+ * Sinon, redirection vers /login.
  */
-function PrivateRoute({ children, requiredRole }) {
+function PrivateRoute({ element, requiredRole }) {
   const { user, isAuthenticated } = useAuth();
   const location = useLocation();
 
@@ -26,7 +26,7 @@ function PrivateRoute({ children, requiredRole }) {
   }
 
   // Tout est OK
-  return children;
+  return element;
 }
 
 export default PrivateRoute;

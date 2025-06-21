@@ -25,37 +25,37 @@ function Login() {
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    console.log("Tentative de connexion...");
+  e.preventDefault();
+  setLoading(true);
+  setError(null);
+  console.log("Tentative de connexion...");
 
     try {
-      if (!window.grecaptcha) {
-        throw new Error("reCAPTCHA non chargé !");
+      // Vérification grecaptcha ready
+      if (!window.grecaptcha || !window.grecaptcha.execute) {
+        throw new Error("reCAPTCHA non chargé ou indisponible.");
       }
 
-      const siteKey = "6LeIgEArAAAAAPc76g2D1L-ts6PZ5iNpWW_DtDlO";
+      // Utilisation async/await au lieu de then/catch/finally
+      await window.grecaptcha.ready(async () => {
+        try {
+          const captchaToken = await window.grecaptcha.execute('6LeIgEArAAAAAPc76g2D1L-ts6PZ5iNpWW_DtDlO', {
+            action: 'login',
+          });
 
-      // Attente du token reCAPTCHA
-      const captchaToken = await new Promise((resolve, reject) => {
-        window.grecaptcha.ready(() => {
-          window.grecaptcha.execute(siteKey, { action: "login" })
-            .then((token) => {
-              if (!token) reject(new Error("Token null"));
-              else resolve(token);
-            })
-            .catch(reject);
-        });
+          await login(email, password, captchaToken);
+          console.log("Connexion réussie, redirection...");
+          navigate("/dashboard");
+        } catch (err) {
+          console.error("Erreur lors du login ou reCAPTCHA :", err);
+          setError("Échec de la connexion ou du CAPTCHA.");
+        } finally {
+          setLoading(false);
+        }
       });
-
-      // Envoie la demande de login
-      await login(email, password, captchaToken);
-      navigate("/dashboard");
     } catch (err) {
-      console.error("Erreur lors de la connexion :", err);
-      setError(err.response?.data?.message || err.message || "Échec de connexion.");
-    } finally {
+      console.error("Erreur générale lors de la connexion :", err);
+      setError("Erreur générale lors de la connexion.");
       setLoading(false);
     }
   };

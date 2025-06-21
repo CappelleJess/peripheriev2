@@ -1,7 +1,7 @@
-import FenetrePage from "../components/FenetrePage";
+// import FenetrePage from "../components/FenetrePage";
 
-function About() {
+// function About() {
 
-}
+// }
 
-export default About;
+// export default About;

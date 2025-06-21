@@ -26,7 +26,7 @@ const Souvenirs = ({ profile }) => {
 
     return (
       <div className="bg-[#1b1f3b] border border-[#6b728e] rounded-2xl p-4 shadow-lg text-sm text-[#faf3e0] w-full max-w-md">
-      <p className="mb-4 text-[#d6c7ae] italic">🌸 Tu te souviens de la fleur séchée sur l'étagère... 🌸</p>
+      <p className="mb-4 text-[#d6c7ae] italic">❀ Tu te souviens des fleurs sur le rebord de fenêtre ... ❀</p>
 
       <ScoreBar label="Souvenirs retrouvés" value={souvenirScore} color="#00ff9f" />
       <ScoreBar label="Ancrage au passé" value={ancragePasse} color="#d65a31" />
