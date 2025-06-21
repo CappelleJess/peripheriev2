@@ -1,10 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import FenetreRetro from './FenetreRetro';
 import ProfilUser from './ProfilUser';
 import Souvenirs from './Souvenirs';
 //import api from '../utils/api';
 import ScoreTotal from './ScoreTotal.jsx';
-import ObjetsMemoire from './ObjetsMemoire.jsx';
 import ChargementRetro from './ChargementRetro.jsx';
 
 console.log("Tu charges le bon fichier grosse neuneu");
@@ -12,6 +11,7 @@ console.log("Tu charges le bon fichier grosse neuneu");
 const DashboardContainer = () => {
   // État pour gérer les fenêtres ouvertes
   const [fenetres, setFenetres] = useState([]);
+  const hasOpenedOnce = useRef(false);
 
   // État pour gérer le profil et son setter
   const [profil, setProfil] = useState({  displayName: 'Test',
@@ -25,10 +25,12 @@ const DashboardContainer = () => {
 
   const toggleFenetre = useCallback((type, titre) => {
     setFenetres((fenetres) => {
-      const fenetreOuverte = fenetres.find(f => f.type === type);
-      return fenetreOuverte 
-        ? fenetres.filter(f => f.type !== type) 
-        : [...fenetres, { id: Date.now(), type, titre }];
+      const fenetreExistante = fenetres.find(f => f.type === type);
+      if (fenetreExistante) {
+        return fenetres.filter(f => f.type !== type);
+      } else {
+        return [...fenetres, { id: Date.now(), type, titre }];
+      }
     });
   }, []);
 
@@ -57,8 +59,9 @@ const DashboardContainer = () => {
   }, []);
 
   useEffect(() => {
-    if (profil && fenetres.length === 0) {
+    if (profil && fenetres.length === 0 && !hasOpenedOnce.current) {
       toggleFenetre('profil', 'Mon Profil');
+      hasOpenedOnce.current = true;
     }
   }, [profil, fenetres.length, toggleFenetre]);
 
@@ -79,7 +82,6 @@ const DashboardContainer = () => {
             <>
               <div className="mt-4">
                 <ScoreTotal score={profil.score} />
-                <ObjetsMemoire objets={profil.objetsDebloques} />
               </div>
             </>
           );

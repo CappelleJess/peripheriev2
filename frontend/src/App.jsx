@@ -13,6 +13,7 @@ import GameUniverse from "./pages/GameUniverse";
 import About from "./pages/About";
 import AdminDashboard from './pages/AdminDashboard';
   import Reliques from "./pages/section/Reliques";
+  import Fragments from "./pages/section/Fragments";
 
 import Layout from "./components/Layout";
 import PublicRoute from "./components/PublicRoute";
@@ -36,6 +37,7 @@ function App() {
         <Route path="news" element={<PublicRoute element={<Actualites />} path="/news" />}/>
         <Route path="about" element={<PublicRoute element={<About />} path="/about" />}/>
         <Route path="/reliques" element={<Reliques />} />
+        <Route path="/fragments" element={<Fragments />} />
         
 
         {/* Routes protégées */}

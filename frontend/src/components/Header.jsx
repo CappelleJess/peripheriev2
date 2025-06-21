@@ -38,6 +38,8 @@ function Header() {
               {user?.role === 'user' && (
                 <>
                   <NavLink to="/play">Jouer</NavLink>
+                  <NavLink to="/news">Actualites</NavLink>
+                  <NavLink to="/dashboard">Dashboard</NavLink>
                   <DropdownMenu title="Univers du jeu" items={[
                     { label: "[ NOEUDS : MÉMOIRE ]", route: "/gameuniverse" },
                     { label: "[ INVENTAIRE MÉMORIEL ]", route: "/reliques" },
@@ -46,8 +48,6 @@ function Header() {
                     { label: "[ CLAUSES D’EXISTENCE ]", route: "/mentions-legales" },
                     { label: "[ CONSOLE DE L’ÉCHO ]", route: "/log" },
                   ]}/>
-                  <NavLink to="/news">Actualites</NavLink>
-                  <NavLink to="/dashboard">Dashboard</NavLink>
                 </>
               )}
               {user?.role === 'admin' && (
