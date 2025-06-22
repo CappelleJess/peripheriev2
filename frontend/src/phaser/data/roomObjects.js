@@ -2,8 +2,8 @@ export const memoryObjectsConfig = [
   {
     key: 'flower',
     sprite: 'flower',
-    x: 512,
-    y: 384,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'flower',
     choices: {
@@ -24,8 +24,8 @@ export const memoryObjectsConfig = [
   {
     key: 'frame',
     sprite: 'frame',
-    x: 300,
-    y: 360,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'frame',
     choices: {
@@ -42,8 +42,8 @@ export const memoryObjectsConfig = [
   {
     key: 'book',
     sprite: 'book',
-    x: 470,
-    y: 480,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'book',
     choices: {
@@ -60,8 +60,8 @@ export const memoryObjectsConfig = [
   {
     key: 'computer',
     sprite: 'computer',
-    x: 470,
-    y: 480,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'computer',
     choices: {
@@ -82,8 +82,8 @@ export const memoryObjectsConfig = [
   {
     key: 'lavalamp',
     sprite: 'lamp',
-    x: 700,
-    y: 380,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'lavalamp',
     choices: {
@@ -104,8 +104,8 @@ export const memoryObjectsConfig = [
   {
     key: 'diskman',
     sprite: 'diskman',
-    x: 420,
-    y: 520,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'diskman',
     choices: {
@@ -126,8 +126,8 @@ export const memoryObjectsConfig = [
   {
     key: 'poster',
     sprite: 'poster',
-    x: 300,
-    y: 280,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'poster',
     choices: {
@@ -148,8 +148,8 @@ export const memoryObjectsConfig = [
   {
     key: 'rug',
     sprite: 'rug',
-    x: 500,
-    y: 600,
+    x: 0,
+    y: 0,
     scale: 1,
     unlockKey: 'rug',
     choices: {

@@ -1,0 +1,36 @@
+{ "frames": {
+   "RoomScene.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 1024, "h": 728 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1024, "h": 728 },
+    "sourceSize": { "w": 1024, "h": 728 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.14.2-x64",
+  "format": "RGBA8888",
+  "size": { "w": 1024, "h": 728 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" },
+   { "name": "Rug", "opacity": 255, "blendMode": "normal" },
+   { "name": "Poster", "opacity": 255, "blendMode": "normal" },
+   { "name": "Diary", "opacity": 255, "blendMode": "normal" },
+   { "name": "Bed", "opacity": 255, "blendMode": "normal" },
+   { "name": "Desk", "opacity": 255, "blendMode": "normal" },
+   { "name": "Nightstand", "opacity": 255, "blendMode": "normal" },
+   { "name": "Diskman", "opacity": 255, "blendMode": "normal" },
+   { "name": "Computer", "opacity": 255, "blendMode": "normal" },
+   { "name": "Window", "opacity": 255, "blendMode": "normal" },
+   { "name": "Lavalamp", "opacity": 255, "blendMode": "normal" },
+   { "name": "Flower", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

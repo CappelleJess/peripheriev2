@@ -2,8 +2,8 @@ export const interactiveExtrasConfig = [
   {
     key: 'chair',
     sprite: 'chair',
-    x: 792,
-    y: 550,
+    x: 0,
+    y: 0,
     scale: 1,
     message: "Une chaise vide, tournée vers la fenêtre.",
     unlockKey: 'chair'
@@ -11,8 +11,8 @@ export const interactiveExtrasConfig = [
   {
     key: 'desk',
     sprite: 'desk',
-    x: 812,
-    y: 341,
+    x: 0,
+    y: 0,
     scale: 1,
     message: "Le bureau est recouvert de vieilles feuilles jaunies.",
     unlockKey: 'desk'
@@ -20,8 +20,8 @@ export const interactiveExtrasConfig = [
   {
     key: 'window',
     sprite: 'window',
-    x: 700,
-    y: 320,
+    x: 0,
+    y: 0,
     scale: 1,
     message: "Le rideau bouge légèrement, un léger courant d'air parcourt la pièce.",
     unlockKey: 'window'

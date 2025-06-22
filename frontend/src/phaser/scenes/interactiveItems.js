@@ -3,6 +3,7 @@ export function createInteractiveObject(scene, config) {
   const { sprite, x, y, scale = 1, message = "Objet interactif." } = config;
 
   const object = scene.add.image(x, y, sprite)
+    .setOrigin(0, 1)
     .setInteractive({ useHandCursor: true })
     .setScale(scale)
     .setName(sprite);
