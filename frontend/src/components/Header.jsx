@@ -2,15 +2,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import DropdownMenu from "./DropdownMenu";
 
-function Header() { 
+function Header() {
   const { isAuthenticated, logout, user } = useAuth();
-  const navigate = useNavigate(); // Hook pour naviguer dynamiquement
-  // const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    navigate("/");
-};
+    navigate("/", { replace: true });
+  };
 
   return (
     <header className="custom-header">
@@ -22,35 +21,35 @@ function Header() {
         </NavLink>
 
         <nav className="nav-links items-center">
-          {!isAuthenticated ? ( 
+          {user?.role === 'user' && (
+          <NavLink to="/">Entrée</NavLink>)}
+          {!user?.role !== 'admin' && (
+            <DropdownMenu
+              title="Codex"
+              items={[
+                { label: "[ NOEUDS ]", route: "/codex" },
+                { label: "[ INVENTAIRE ]", route: "/reliques" },
+                { label: "[ JOURNAL DE DÉRIVE ]", route: "/fragments" },
+                { label: "[ CARTE ]", route: "/bios" },
+                { label: "[ CLAUSES D’EXISTENCE ]", route: "/mentions-legales" },
+                // { label: "[ CONSOLE ]", route: "/logs" }, // optionnel
+              ]}
+            />)}
+
+          {user?.role === 'admin' && (
+            <NavLink to="/admin" className="text-[#00ff9f]">Admin</NavLink>
+            )}
+          {user?.role === 'admin' && (
+            <NavLink to="/play" className="text-[#00ff9f]">Jeu</NavLink>
+            )}
+
+          {!isAuthenticated ? (
             <>
-              <NavLink to="/">Accueil</NavLink>
-              <NavLink to="/play">Jouer</NavLink>
-              <NavLink to="/news">Actualites</NavLink>
-              <NavLink to="/about">À propos</NavLink>
               <NavLink to="/login">Connexion</NavLink>
               <NavLink to="/register">Inscription</NavLink>
             </>
           ) : (
-            <>
-              <NavLink to="/">Entrée</NavLink>
-              {user?.role === 'user' && (
-                <>
-                  <DropdownMenu title="Codex" items={[
-                    { label: "[ NOEUDS : MÉMOIRE ]", route: "/codex" },
-                    { label: "[ INVENTAIRE MÉMORIEL ]", route: "/reliques" },
-                    { label: "[ JOURNAL DE DÉRIVE ]", route: "/fragments" },
-                    { label: "[ PROFIL ALTÉRÉ ]", route: "/bios" },
-                    { label: "[ CLAUSES D’EXISTENCE ]", route: "/mentions-legales" },
-                    { label: "[ CONSOLE DE L’ÉCHO ]", route: "/logs" },
-                  ]}/>
-                </>
-              )}
-              {user?.role === 'admin' && (
-                <NavLink to="/admin" className="text-[#00ff9f]">Admin</NavLink>
-              )}
-              <button onClick={handleLogout}>Déconnexion</button>
-            </>
+            <button onClick={handleLogout}>Déconnexion</button>
           )}
         </nav>
       </div>

@@ -2,7 +2,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "framer-motion": "^12.18.1",
-    "lucide-react": "^0.522.0",
-    "tailwind-scrollbar": "^4.0.2"
+    "lucide-react": "^0.522.0"
   }
 }

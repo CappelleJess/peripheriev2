@@ -1,14 +1,10 @@
 import { useAuth } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 
-const PublicRoute = ({ element, path }) => {
+const PublicRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
 
-  const allowedPaths = ["/news", "/play", "/codex"];
-  
-  if (isAuthenticated && allowedPaths.includes(path)) {
-    return element;
-  }
+  // Redirige les utilisateurs connectés vers le dashboard uniquement pour login/register
   return isAuthenticated ? <Navigate to="/dashboard" replace /> : element;
 };
 

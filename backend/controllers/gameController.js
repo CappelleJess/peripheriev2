@@ -121,9 +121,9 @@ export async function updateGameScores(req, res) {
         const profile = await Profile.findOneAndUpdate(
             { user: req.params.userId },
             {
-                souvenirScore,  // Mise à jour du souvenirScore
-                ancragePasse,   // Mise à jour du ancragePasse
-                emergenceNostalgie  // Mise à jour de l'émergenceNostalgie
+                souvenirScore,
+                ancragePasse,
+                emergenceNostalgie
             },
             { new: true }
         );

@@ -44,8 +44,14 @@ function Login() {
           });
 
           await login(email, password, captchaToken);
+          const userData = JSON.parse(localStorage.getItem("user"));
           console.log("Connexion réussie, redirection...");
-          navigate("/intro");
+          
+          if (userData?.role === "admin") {
+            navigate("/admin", { replace: true });
+          } else {
+            navigate("/intro", { replace: true });
+          }
         } catch (err) {
           console.error("Erreur lors du login ou reCAPTCHA :", err);
           setError("Échec de la connexion ou du CAPTCHA.");
