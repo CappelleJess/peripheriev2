@@ -1,31 +1,34 @@
-// Gestion de l'état de la progression du joueur
-
 const GameState = {
   souvenirScore: 0,
   ancragePasse: 0,
   emergenceNostalgie: 0,
-  updateScore(key, delta) {
-    if (this.hasOwnProperty(key)) {
-      this[key] += delta;
-    }
-  },
-
+  interactions: {},
   dialogueOpen: false,
   objectsInteracted: 0,
+  subscribers: [],
 
-  // Réinitialise les scores à zéro si besoin
-  /* reset() {
-    this.souvenirScore = 0;
-    this.ancragePasse = 0;
-    this.emergenceNostalgie = 0;
-    this.interactions = {
-      flower: null,
-      frame: null,
-      book: null
+  subscribe(callback) {
+    this.subscribers.push(callback);
+  },
+
+  notify() {
+    this.subscribers.forEach(cb => cb(this.getScores()));
+  },
+
+  updateScores(newScores) {
+    this.souvenirScore = newScores.souvenirScore ?? this.souvenirScore;
+    this.ancragePasse = newScores.ancragePasse ?? this.ancragePasse;
+    this.emergenceNostalgie = newScores.emergenceNostalgie ?? this.emergenceNostalgie;
+    this.notify();
+  },
+
+  getScores() {
+    return {
+      souvenirScore: this.souvenirScore,
+      ancragePasse: this.ancragePasse,
+      emergenceNostalgie: this.emergenceNostalgie,
     };
-    this.dialogueOpen = false;
-    this.objectsInteracted = 0;
-  }, */
+  },
 
   // MàJ des scores depuis le backend
   syncWithBackend(data) {
@@ -52,3 +55,17 @@ const GameState = {
 };
 
 export default GameState;
+
+  // Réinitialise les scores à zéro si besoin
+  /* reset() {
+    this.souvenirScore = 0;
+    this.ancragePasse = 0;
+    this.emergenceNostalgie = 0;
+    this.interactions = {
+      flower: null,
+      frame: null,
+      book: null
+    };
+    this.dialogueOpen = false;
+    this.objectsInteracted = 0;
+  }, */
