@@ -7,6 +7,7 @@ import profileRoutes from './routes/profileRoutes.js';
 console.log("Tentative d'importation de profileRoutes...");
 import gameRoutes from './routes/gameRoutes.js';
 import assetRoutes from './routes/assetRoutes.js';
+import emailRoutes from './routes/emailRoutes.js';
 
 config();
 connectDB();
@@ -46,6 +47,11 @@ app.listen(PORT, () => {
 });
 
 app.use('/api/assets', assetRoutes);
+
+app.use('/api/email', (req, res, next) => {
+  console.log('Appel à /api/email');
+  next();
+}, emailRoutes);
 
 // Route non trouvée
 app.use((req, res) => {

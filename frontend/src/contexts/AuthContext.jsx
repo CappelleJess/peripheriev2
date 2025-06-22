@@ -52,8 +52,14 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.message || "Erreur lors de la connexion");
+        let errMessage = "Erreur inconnue";
+        try {
+          const errData = await response.json();
+          errMessage = errData.message || errMessage;
+        } catch {
+          errMessage = `Erreur serveur (${response.status})`;
+        }
+        throw new Error(errMessage);
       }
 
       const data = await response.json();

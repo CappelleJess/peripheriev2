@@ -15,6 +15,7 @@ import Fragments from "./pages/section/Fragments";
 import Bios from "./pages/section/Bios";
 import MentionsLegales from "./pages/section/MentionsLegales";
 import Logs from "./pages/section/Logs";
+import TestEmail from "./pages/TestEmail";
 
 import Layout from "./components/Layout";
 import PublicRoute from "./components/PublicRoute";
@@ -33,12 +34,14 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
 
-          <Route path="codex" element={<PublicRoute><Codex /></PublicRoute>} />
+          <Route path="codex" element={<Codex />} />
           <Route path="/reliques" element={<PrivateRoute requiredRole="user" element={<Reliques />} />} />
-          <Route path="/fragments" element={<PublicRoute><Fragments /></PublicRoute>} />
+          <Route path="/fragments" element={<Fragments />} />
           <Route path="/bios" element={<PrivateRoute requiredRole="user" element={<Bios />} />} />
-          <Route path="/mentions-legales" element={<PublicRoute><MentionsLegales /></PublicRoute>} />
-          <Route path="/logs" element={<PublicRoute><Logs /></PublicRoute>} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/logs" element={<Logs />} />
+
+          <Route path="/testemail" element={<PrivateRoute requiredRole="user" element={<TestEmail />} />} />
 
           <Route path="dashboard" element={<PrivateRoute requiredRole="user" element={<Dashboard />} />} />
           <Route path="settings" element={<PrivateRoute element={<Settings />} />} />

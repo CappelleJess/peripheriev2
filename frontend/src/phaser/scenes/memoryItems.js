@@ -8,6 +8,7 @@ export function createMemoryObject(scene, config) {
   const alreadyUsed = GameState.interactions[key] !== null;
 
   const object = scene.add.image(x, y, sprite)
+    .setOrigin(0, 1)
     .setInteractive({ useHandCursor: true })
     .setScale(scale)
     .setName(key)
