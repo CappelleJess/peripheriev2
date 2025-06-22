@@ -14,8 +14,9 @@ export default class BootScene extends Phaser.Scene {
     this.load.image('icon_smell', 'assets/images/icon_smell.png');
     this.load.image('icon_ignore', 'assets/images/icon_ignore.png');
     this.load.image('flower', 'assets/images/flower.png');
+    this.load.image('poster', 'assets/images/poster.png');
     // this.load.image('frame', 'assets/images/frame.png');
-    this.load.image('book', 'assets/images/diary.png');
+    this.load.image('book', 'assets/images/book.png');
     this.load.image('computer', 'assets/images/computer.png');
     this.load.image('lavalamp', 'assets/images/lavalamp.png');
     this.load.image('window', 'assets/images/window.png');

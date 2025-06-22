@@ -1,4 +1,4 @@
-export const interactiveExtrasConfig = [
+export const decorationsConfig = [
   {
     key: 'chair',
     sprite: 'chair',
