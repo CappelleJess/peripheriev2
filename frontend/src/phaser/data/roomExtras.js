@@ -1,5 +1,6 @@
 export const decorationsConfig = [
   {
+    key: 'bed',
     sprite: 'bed',
     x: 512,
     y: 384,
@@ -10,7 +11,8 @@ export const decorationsConfig = [
       width: 242,
       height: 329
     },
-    message: "Ton ancien lit. Le matelas s’est affaissé, mais l’empreinte de ton corps y est encore visible."
+    message: "Ton ancien lit. Te souviens-tu de la dernière nuit passé ici ?",
+    unlockKey: 'desk'
   },
   {
     key: 'desk',
@@ -24,10 +26,11 @@ export const decorationsConfig = [
       width: 341,
       height: 73
     },
-    message: "Le bureau est recouvert de vieilles feuilles jaunies.",
+    message: "Un tas de feuilles jaunies jonchent le bureau.",
     unlockKey: 'desk'
   },
   {
+    key: 'nightstand',
     sprite: 'nightstand',
     x: 512,
     y: 384,
@@ -38,7 +41,7 @@ export const decorationsConfig = [
       width: 112,
       height: 79
     },
-    message: "La table de nuit est encore là. Tu crois y voir un carnet oublié…"
+    message: "La table de nuit est encore là."
   },
   {
     key: 'window',
@@ -52,7 +55,7 @@ export const decorationsConfig = [
       width: 222,
       height: 270
     },
-    message: "Le rideau bouge légèrement, un léger courant d'air parcourt la pièce.",
+    message: "Le rideau bouge légèrement, pourtant la fenêtre est fermée ?",
     unlockKey: 'window'
   }
 ];

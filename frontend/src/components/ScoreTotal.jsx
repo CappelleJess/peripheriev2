@@ -13,11 +13,12 @@ const getLabel = (score) => {
   return 'Amnésie totale';
 };
 
-const ScoreTotal = ({ score }) => {
+const ScoreTotal = ({ souvenirScore = 0, ancragePasse = 0, emergenceNostalgie = 0 }) => {
+  const score = Math.round((souvenirScore + ancragePasse + emergenceNostalgie) / 3);
   return (
     <div className="bg-[#1b1f3b] p-4 rounded-2xl shadow-md text-[#faf3e0] w-full max-w-md mx-auto">
       <img src="/img/icons/forgetmenot.png"
-        alt="Symbole du souvenir"
+        alt="Myosotis"
         className="w-8 h-8 mb-2 mx-auto"
       />
       <h3 className="text-lg font-semibold mb-2 text-center">Score global</h3>

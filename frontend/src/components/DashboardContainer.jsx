@@ -91,40 +91,28 @@ const DashboardContainer = () => {
     };
 
   return (
-  console.log("Debug :", profil),
-  <div className="relative w-full h-auto min-h-screen bg-[#1b1f3b] text-[#faf3e0] p-4 ">
-      {/* Barre de boutons */}
-      <div className="p-2 flex gap-4 bg-[#3e4161] text-white shadow-md border-b border-[#6b728e]">
-        <button
-          className="bg-[#4a90e2] hover:bg-[#357ABD] px-3 py-1 rounded"
-          onClick={() => toggleFenetre('profil', 'Mon Profil')}
-        >
+    <div className="dashboard-retro">
+      <div className="dashboard-bar">
+        <button className="btn-retro" onClick={() => toggleFenetre('profil', 'Mon Profil')}>
           Profil
         </button>
-        <button
-          className="bg-[#9b5de5] hover:bg-[#844bcc] px-3 py-1 rounded"
-          onClick={() => toggleFenetre('souvenirs', 'Souvenirs')}
-        >
+        <button className="btn-retro" onClick={() => toggleFenetre('souvenirs', 'Souvenirs')}>
           Souvenirs
         </button>
-        <button
-          className="bg-[#d65a31] hover:bg-[#b04a25] px-3 py-1 rounded"
-          onClick={() => toggleFenetre('progression', 'Progression')}
-        >
+        <button className="btn-retro" onClick={() => toggleFenetre('progression', 'Progression')}>
           Progression
         </button>
       </div>
 
-      {/* Fenêtres ouvertes */}
-      {fenetres.map((f) => (
-        <FenetreRetro
-          key={f.id}
-          titre={f.titre}
-          onClose={() => fermerFenetre(f.id)}
-        >
-          {getContenu(f.type)}
-        </FenetreRetro>
-      ))}
+      <div className="dashboard-fenetres">
+        {fenetres.map((f) => (
+          <div key={f.id} className="dashboard-fenetre-wrapper">
+            <FenetreRetro titre={f.titre} onClose={() => fermerFenetre(f.id)}>
+              {getContenu(f.type)}
+            </FenetreRetro>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
