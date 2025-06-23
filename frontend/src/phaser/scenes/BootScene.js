@@ -19,11 +19,11 @@ export default class BootScene extends Phaser.Scene {
     this.load.image('book', 'assets/images/book.png');
     this.load.image('computer', 'assets/images/computer.png');
     this.load.image('lavalamp', 'assets/images/lavalamp.png');
-    this.load.image('window', 'assets/images/window.png');
     this.load.image('diskman', 'assets/images/diskman.png');
     this.load.image('rug', 'assets/images/rug.png');
     // Non-interactifs
     // this.load.image('chair', 'assets/images/chair.png');
+    this.load.image('window', 'assets/images/window.png');
     this.load.image('nightstand', 'assets/images/nightstand.png');
     this.load.image('desk', 'assets/images/desk.png');
     this.load.image('bed', 'assets/images/bed.png');

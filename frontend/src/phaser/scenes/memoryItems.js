@@ -47,7 +47,7 @@ export function createMemoryObject(scene, config) {
     const objectTopY = zone.y - zone.height;
 
     // Boîte de dialogue principale
-    const dialogBg = scene.add.rectangle(object.x, objectTopY - 10, 300, 100, 0x000000, 0.9)
+    const dialogBg = scene.add.rectangle(object.x, objectTopY + 40, 300, 100, 0x000000, 0.9)
       .setOrigin(0.5)
       .setDepth(10)
       .disableInteractive?.();
@@ -58,7 +58,7 @@ export function createMemoryObject(scene, config) {
     keys.forEach((choiceKey, index) => {
       const button = scene.add.text(
         object.x - 80 + index * 80,
-        objectTopY - 20,
+        objectTopY + 40,
         choiceKey,
         {
           fontSize: '14px',
@@ -69,7 +69,7 @@ export function createMemoryObject(scene, config) {
       )
       .setInteractive({ useHandCursor: true })
       .setOrigin(0.5)
-      .setDepth(11) // au-dessus de la boîte de dialogue
+      .setDepth(11)
       .on('pointerdown', async () => {
         const { text, scores } = choices[choiceKey];
 
@@ -81,7 +81,7 @@ export function createMemoryObject(scene, config) {
         GameState.objectsInteracted += 1;
         object.setAlpha(0.9); 
 
-        const memoryText = scene.add.text(object.x, objectTopY - 40, text, {
+        const memoryText = scene.add.text(object.x, objectTopY + 30, text, {
           fontSize: '18px',
           fill: '#ffffff',
           wordWrap: { width: 320, useAdvancedWrap: true },

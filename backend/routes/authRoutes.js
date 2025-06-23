@@ -21,4 +21,8 @@ router.post('/register', register);
 // Route pour la connexion
 router.post('/login', loginLimiter, login);
 
+router.get('/test', (req, res) => {
+  res.send('API auth OK');
+});
+
 export default router;

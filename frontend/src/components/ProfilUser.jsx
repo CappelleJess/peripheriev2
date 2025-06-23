@@ -34,30 +34,30 @@ const ProfilUser = ({ profile, setProfile }) => {
   };
 
   return (
-    <div className="bg-[#1b1f3b] border border-[#6b728e] rounded-2xl p-4 shadow-lg text-sm text-[#faf3e0] w-full max-w-md space-y-3">
-      <h2 className="text-lg font-bold text-[#00ff9f]">Mon Profil</h2>
+    <div className="profil-container">
+      <h2 className="profil-title">Mon Profil</h2>
 
-      <div className="flex items-center gap-2">
-        <label className="font-bold">Nom :</label>
+      <div className="profil-line">
+        <label className="profil-label">Nom :</label>
         <input
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
-          className="px-2 py-1 rounded bg-[#2e2e2e] text-[#faf3e0] border border-[#00ff9f]"
+          className="profil-input"
         />
         <button
           onClick={handleSave}
           disabled={isSaving}
-          className="px-2 py-1 bg-[#4a90e2] hover:bg-[#357ABD] text-white rounded"
+          className="btn-retro"
         >
           {isSaving ? "Enregistrement..." : "Enregistrer"}
         </button>
       </div>
 
-      <div><span className="font-bold text-[#00ff9f]">Souvenir Score :</span> {profile.souvenirScore}</div>
-      <div><span className="font-bold text-[#e60073]">Ancrage au passé :</span> {profile.ancragePasse}</div>
-      <div><span className="font-bold text-[#d65a31]">Émergence nostalgique :</span> {profile.emergenceNostalgie}</div>
-      <div><span className="font-bold text-[#faf3e0]">Score total :</span> {profile.score}</div>
-      <div className="text-[#d6c7ae]">Dernière connexion : {new Date(profile.lastLoginDate).toLocaleDateString("fr-BE")}</div>
+      <div><span className="profil-tag tag-mint">Souvenirs :</span> {profile.souvenirScore}</div>
+      <div><span className="profil-tag tag-lilas">Ancrage au passé :</span> {profile.ancragePasse}</div>
+      <div><span className="profil-tag tag-peche">Émergence nostalgique :</span> {profile.emergenceNostalgie}</div>
+      <div><span className="profil-tag">Score total :</span> {profile.score}</div>
+      <div className="profil-footer">Dernière connexion : {new Date(profile.lastLoginDate).toLocaleDateString("fr-BE")}</div>
     </div>
   );
 };

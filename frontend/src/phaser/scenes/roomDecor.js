@@ -11,14 +11,14 @@ export function createInteractiveObject(scene, config) {
     .setName(sprite);
 
     object.on('pointerdown', () => {
-    const text = scene.add.text(x, y - 40, message, {
+    const text = scene.add.text(x, y + 20, message, {
       fontSize: '16px',
       fill: '#ffffff',
       backgroundColor: '#000000',
       padding: { x: 8, y: 4 }
     })
       .setOrigin(0.5)
-      .setDepth(5)
+      .setDepth(12)
       .disableInteractive?.();
 
     scene.time.delayedCall(1800, () => {

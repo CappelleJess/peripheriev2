@@ -475,3 +475,120 @@ button:not(.btn-retro) {
 .animate-glitch {
   animation: glitch 1s infinite;
 }
+
+/* ====== Dashboard ====== */
+.dashboard-retro {
+  background: linear-gradient(135deg, #0d0f1f 0%, #1b1f3b 100%);
+  color: #33ff33;
+  padding: 1rem;
+  min-height: 100vh;
+  font-family: 'Courier New', monospace;
+}
+
+.dashboard-bar {
+  background-color: #111822;
+  border: 1px solid #00ff9f;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 0 8px #00ff9f55;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-fenetres {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-fenetre-wrapper {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.score-container {
+  margin-top: 1rem;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*====== PROFIL ====== */
+.profil-container {
+  background: linear-gradient(135deg, #11141e 0%, #1f2335 100%);
+  border: 1px solid #00bfa6;
+  box-shadow: 0 0 10px #00bfa655;
+  padding: 1.5rem;
+  border-radius: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #cbe3e7;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.profil-title {
+  font-family: 'Press Start 2P', monospace;
+  color: #7fffd4;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  text-align: left;
+  text-shadow: 0 0 3px #7fffd4;
+}
+
+.profil-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.profil-label {
+  font-weight: bold;
+  color: #7fffd4;
+}
+
+.profil-input {
+  background-color: #0a0e1a;
+  border: 1px solid #7fffd4;
+  color: #cbe3e7;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: inherit;
+  width: 100%;
+  max-width: 200px;
+}
+
+.profil-tag {
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 4px;
+  color: #cbe3e7;
+}
+
+.tag-mint {
+  color: #7fffd4;
+}
+
+.tag-lilas {
+  color: #2578ac;
+}
+
+.tag-peche {  
+  color: #8466e7;
+}
+
+.profil-footer {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #d36f6f;
+}
