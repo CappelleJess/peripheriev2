@@ -7,7 +7,7 @@ export default class MenuScene extends Phaser.Scene {
 
   preload() {
     // Tous les assets à charger AVANT le menu
-    this.load.image('menu-bg', 'assets/backgrounds/menu-bg.png');
+    //this.load.image('menu-bg', 'assets/backgrounds/menu-bg.png');
     this.load.image('room', 'assets/backgrounds/room.png');
     this.load.image('flower', 'assets/images/flower.png');
     this.load.image('frame', 'assets/images/frame.png');
@@ -30,7 +30,7 @@ export default class MenuScene extends Phaser.Scene {
     this.registry.set('ancragePasse', 0);
 
     // Fond d'écran
-    this.add.image(512, 384, 'menu-bg').setOrigin(0.5);
+    //this.add.image(512, 384, 'menu-bg').setOrigin(0.5);
 
     // Curseur
     this.input.setDefaultCursor('url(assets/images/arrow.png), pointer');

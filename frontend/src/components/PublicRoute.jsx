@@ -1,11 +1,15 @@
-import { useAuth } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
-const PublicRoute = ({ element }) => {
-  const { isAuthenticated } = useAuth();
+function PublicRoute({ children }) {
+  const { user } = useAuth();
 
-  // Redirige les utilisateurs connectés vers le dashboard uniquement pour login/register
-  return isAuthenticated ? <Navigate to="/dashboard" replace /> : element;
-};
+  const path = window.location.pathname;
+  if ((path === "/login" || path === "/register") && user) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  return children;
+}
 
 export default PublicRoute;

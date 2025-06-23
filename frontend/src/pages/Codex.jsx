@@ -1,7 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { motion } from "framer-motion";
-import { Gamepad2, BarChart4, BookOpen, Cpu, Brain, Terminal, ShieldAlert } from "lucide-react";
+import {
+  Gamepad2,
+  BarChart4,
+  BookOpen,
+  Cpu,
+  Brain,
+  Terminal,
+  ShieldAlert
+} from "lucide-react";
 
 function Codex() {
   const { isAuthenticated } = useAuth();
@@ -26,7 +34,7 @@ function Codex() {
           </Link>
         </motion.div>
 
-        {/* Carte Dashboard */}
+        {/* Carte Dashboard (protégée) */}
         <motion.div
           whileHover={isAuthenticated ? { scale: 1.08 } : {}}
           animate={{ y: [0, 5, 0, -5, 0] }}
@@ -51,12 +59,40 @@ function Codex() {
         </motion.div>
       </div>
 
+      {/* Cartes secondaires */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-6xl">
-        <SectionLink icon={<BookOpen />} title="Journal de Dérive" to="/fragments" desc="Entrées résiduelles extraites de la mémoire." />
-        <SectionLink icon={<Brain />} title="Profil Altéré" to="/bios" desc="Fragments d’identité en résonance instable." />
-        <SectionLink icon={<Cpu />} title="Inventaire Mémoriel" to="/reliques" desc="Objets conservés. Vestiges sensoriels." />
-        <SectionLink icon={<Terminal />} title="Console de l’Écho" to="/log" desc="Sortie texte du système. Échos anciens." />
-        <SectionLink icon={<ShieldAlert />} title="Clauses d’existence" to="/mentions-legales" desc="Conditions implicites du souvenir et de la perte." />
+        <SectionLink
+          icon={<BookOpen />}
+          title="Journal de Dérive"
+          to="/fragments"
+          desc="Entrées résiduelles extraites de la mémoire."
+          disabled={!isAuthenticated}
+        />
+        <SectionLink
+          icon={<Brain />}
+          title="Profil Altéré"
+          to="/bios"
+          desc="Fragments d’identité en résonance instable."
+          disabled={!isAuthenticated}
+        />
+        <SectionLink
+          icon={<Cpu />}
+          title="Inventaire Mémoriel"
+          to="/reliques"
+          desc="Objets conservés. Vestiges sensoriels."
+        />
+        <SectionLink
+          icon={<Terminal />}
+          title="Console de l’Écho"
+          to="/logs"
+          desc="Sortie texte du système. Échos anciens."
+        />
+        <SectionLink
+          icon={<ShieldAlert />}
+          title="Clauses d’existence"
+          to="/mentions-legales"
+          desc="Conditions implicites du souvenir et de la perte."
+        />
       </div>
     </div>
   );
@@ -68,7 +104,7 @@ function SectionLink({ icon, title, to, desc, disabled = false }) {
   const handleClick = () => {
     if (!disabled) navigate(to);
   };
-
+  
   return (
     <motion.div
       whileHover={!disabled ? { scale: 1.05 } : {}}

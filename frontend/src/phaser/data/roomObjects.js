@@ -6,6 +6,7 @@ export const memoryObjectsConfig = [
     y: 384,
     scale: 1,
     unlockKey: 'flower',
+    hitbox: { x: 561.0, y: 261, width: 46, height: 108 },
     choices: {
       examiner: {
         text: "Cette fleur te rappelle un souvenir agréable de l’époque où tout semblait plus simple.",
@@ -21,31 +22,32 @@ export const memoryObjectsConfig = [
       }
     }
   },
-  {
-    key: 'frame',
-    sprite: 'frame',
-    x: 300,
-    y: 360,
-    scale: 1,
-    unlockKey: 'frame',
-    choices: {
-      examiner: {
-        text: "Un cadre photo usé... Tu reconnais à peine les visages, mais une ambiance familière en émane.",
-        scores: { souvenir: 2, nostalgie: 2 }
-      },
-      ignorer: {
-        text: "Tu passes devant sans t'arrêter.",
-        scores: { ancrage: -2 }
-      }
-    }
-  },
+  // {
+  //   key: 'frame',
+  //   sprite: 'frame',
+  //   x: 512,
+  //   y: 384,
+  //   scale: 1,
+  //   unlockKey: 'frame',
+  //   choices: {
+  //     examiner: {
+  //       text: "Un cadre photo usé... Tu reconnais à peine les visages, mais une ambiance familière en émane.",
+  //       scores: { souvenir: 2, nostalgie: 2 }
+  //     },
+  //     ignorer: {
+  //       text: "Tu passes devant sans t'arrêter.",
+  //       scores: { ancrage: -2 }
+  //     }
+  //   }
+  // },
   {
     key: 'book',
     sprite: 'book',
-    x: 470,
-    y: 480,
+    x: 512,
+    y: 384,
     scale: 1,
     unlockKey: 'book',
+    hitbox: { x: 311.5, y: 623, width: 31, height: 61 },
     choices: {
       examiner: {
         text: "Un carnet griffonné de souvenirs, d’esquisses, de mots oubliés.",
@@ -60,10 +62,11 @@ export const memoryObjectsConfig = [
   {
     key: 'computer',
     sprite: 'computer',
-    x: 470,
-    y: 480,
+    x: 512,
+    y: 384,
     scale: 1,
     unlockKey: 'computer',
+    hitbox: { x: 887.0, y: 363, width: 132, height: 164 },
     choices: {
       allumer: {
         text: "L'écran s'allume dans un cliquetis. Une lumière pâle, des formes familières... comme un rêve éveillé.",
@@ -81,11 +84,12 @@ export const memoryObjectsConfig = [
   },
   {
     key: 'lavalamp',
-    sprite: 'lamp',
-    x: 700,
-    y: 380,
+    sprite: 'lavalamp',
+    x: 512,
+    y: 384,
     scale: 1,
     unlockKey: 'lavalamp',
+    hitbox: { x: 376.5, y: 391, width: 43, height: 105 },
     choices: {
       examiner: {
         text: "Les bulles de cire montent et redescendent, lentes et hypnotiques.",
@@ -104,10 +108,11 @@ export const memoryObjectsConfig = [
   {
     key: 'diskman',
     sprite: 'diskman',
-    x: 420,
-    y: 520,
+    x: 512,
+    y: 384,
     scale: 1,
     unlockKey: 'diskman',
+    hitbox: { x: 232.0, y: 157, width: 96, height: 114 },
     choices: {
       ecouter: {
         text: "Une piste démarre. Tu reconnais les premières notes, et ton cœur se serre.",
@@ -126,10 +131,11 @@ export const memoryObjectsConfig = [
   {
     key: 'poster',
     sprite: 'poster',
-    x: 300,
-    y: 280,
+    x: 512,
+    y: 384,
     scale: 1,
     unlockKey: 'poster',
+    hitbox: { x: 232.0, y: 157, width: 96, height: 114 },
     choices: {
       examiner: {
         text: "Un poster abîmé. Tu te souviens de l’avoir fixé là, un été.",
@@ -148,10 +154,11 @@ export const memoryObjectsConfig = [
   {
     key: 'rug',
     sprite: 'rug',
-    x: 500,
-    y: 600,
+    x: 512,
+    y: 384,
     scale: 1,
     unlockKey: 'rug',
+    hitbox: { x: 706.5, y: 652, width: 549, height: 149 },
     choices: {
       lever: {
         text: "Sous le tapis, une tache que tu avais essayer de cacher, elle a l'air d'avoir changé.",

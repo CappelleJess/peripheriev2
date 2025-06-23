@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import GameState from '../data/GameState';
 import { createMemoryObject } from './memoryItems';
-import { createInteractiveObject } from './interactiveItems';
+import { createInteractiveObject } from './roomDecord';
 import { memoryObjectsConfig } from '../data/roomObjects';
-import { interactiveExtrasConfig } from '../data/roomExtras';
+import { decorationsConfig } from '../data/roomExtras';
 
 export default class RoomScene extends Phaser.Scene {
   constructor() {
@@ -50,6 +50,9 @@ export default class RoomScene extends Phaser.Scene {
     // Curseur personnalisé
     this.input.setDefaultCursor('url(assets/images/arrow.png), pointer');
 
+    memoryObjectsConfig.forEach(config => createMemoryObject(this, config));
+    decorationsConfig.forEach(config => createInteractiveObject(this, config));
+
     // Fond
     this.add.image(512, 384, 'room')
       .setOrigin(0.5)
@@ -84,7 +87,7 @@ export default class RoomScene extends Phaser.Scene {
     });
 
     // Objets non-impactants
-    interactiveExtrasConfig.forEach(config => {
+    decorationsConfig.forEach(config => {
       createInteractiveObject(this, config);
     });
 

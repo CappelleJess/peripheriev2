@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import { createMemoryObject } from './memoryItems';
-import { createInteractiveObject } from './interactiveItems';
+import { createInteractiveObject } from './roomDecor';
 import GameState from '../data/GameState';
 import { memoryObjectsConfig } from '../data/roomObjects';
-import { interactiveExtrasConfig } from '../data/roomExtras';
+import { decorationsConfig } from '../data/roomExtras';
 import api from '../../utils/api';
 
 export default class RoomScene extends Phaser.Scene {
@@ -16,7 +16,6 @@ export default class RoomScene extends Phaser.Scene {
     // Apparition en fondu
     this.cameras.main.fadeIn(1000, 0, 0, 0); // this.cameras.main.fadeIn(1000);    
     this.cameras.main.setBackgroundColor('#000000'); // this.add.image(0, 0, "background").setOrigin(0);
-
 
     /* Son d’ambiance prévu mais non utilisé dans cette version
     Son d'ambiance
@@ -37,25 +36,24 @@ export default class RoomScene extends Phaser.Scene {
 
     // Texte de score
     this.souvenirText = this.add.text(20, 20, `Souvenirs : ${GameState.souvenirScore}`, {
-      fontSize: '20px',
+      fontSize: '10px',
       fill: '#ffffff'
-    });
+    }).setAlpha(0);
 
     this.ancrageText = this.add.text(20, 50, `Ancrage : ${GameState.ancragePasse}`, {
-      fontSize: '20px',
+      fontSize: '10px',
       fill: '#ffffff'
-    });
+    }).setAlpha(0);
 
     this.nostalgieText = this.add.text(20, 80, `Nostalgie : ${GameState.emergenceNostalgie}`, {
-      fontSize: '20px',
+      fontSize: '10px',
       fill: '#ffffff'
-    });
+    }).setAlpha(0);
 
-    this.startTime = Date.now(); // Init du timer
     this.timerText = this.add.text(20, 110, '00:00:00', {
-      fontSize: '20px',
+      fontSize: '10px',
       fill: '#ffffff'
-    });
+    }).setAlpha(0);
 
     // Chargement des scores backend
     this.initGameProgress();
@@ -66,7 +64,7 @@ export default class RoomScene extends Phaser.Scene {
     });
 
     // Objets non-impactants
-    interactiveExtrasConfig.forEach(config => {
+    decorationsConfig.forEach(config => {
       createInteractiveObject(this, config);
     });
 

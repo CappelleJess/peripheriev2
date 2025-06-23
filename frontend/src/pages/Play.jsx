@@ -12,7 +12,9 @@ const Play = () => {
   const [visible, setVisible] = useState(false); // Pour effet de fade-in progressif du jeu
 
   useEffect(() => {
-  // Chargement des scores et de la progression du backend
+    const token = localStorage.getItem('token');
+
+    // Chargement des scores et de la progression du backend uniquement si connecté
     const loadProfile = async () => {
       try {
         const res = await api.get('/profile');
@@ -26,7 +28,11 @@ const Play = () => {
       }
     };
 
-    loadProfile();
+    if (token) {
+      loadProfile();
+    } else {
+      console.warn("Aucun token trouvé : lancement du jeu en mode invité.");
+    }
 
     // Démarrage du moteur Phaser 
     if (!gameInstance) {

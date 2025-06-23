@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import FenetrePage from "../../components/FenetrePage";
 import { memoryObjectsConfig } from "../../phaser/data/roomObjects";
-import { interactiveExtrasConfig } from "../../phaser/data/roomExtras";
+import { decorationsConfig } from "../../phaser/data/roomExtras";
 import MemoryItemCard from "../../components/MemoryItemCard";
 
 function Reliques() {
@@ -30,7 +30,7 @@ function Reliques() {
     }
   }, [user]);
 
-  const allObjects = [...memoryObjectsConfig, ...interactiveExtrasConfig];
+  const allObjects = [...memoryObjectsConfig, ...decorationsConfig];
   const objetsTrouves = allObjects.filter(obj => objetsDebloques.includes(obj.key));
 
   return (
