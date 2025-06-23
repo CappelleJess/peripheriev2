@@ -1,5 +1,6 @@
 export const decorationsConfig = [
   {
+    key: 'bed',
     sprite: 'bed',
     x: 512,
     y: 384,
@@ -10,7 +11,8 @@ export const decorationsConfig = [
       width: 242,
       height: 329
     },
-    message: "Ton ancien lit. Te souviens-tu de la dernière nuit passé ici ?"
+    message: "Ton ancien lit. Te souviens-tu de la dernière nuit passé ici ?",
+    unlockKey: 'desk'
   },
   {
     key: 'desk',
@@ -28,6 +30,7 @@ export const decorationsConfig = [
     unlockKey: 'desk'
   },
   {
+    key: 'nightstand',
     sprite: 'nightstand',
     x: 512,
     y: 384,

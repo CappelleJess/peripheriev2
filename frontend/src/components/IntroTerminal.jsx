@@ -29,7 +29,7 @@ function IntroTerminal() {
         const timeout = setTimeout(() => {
           setDisplayedText((prev) => prev + phrase[charIndex]);
           setCharIndex(charIndex + 1);
-        }, 80); // vitesse de frappe
+        }, 20); // vitesse de frappe
         return () => clearTimeout(timeout);
       } else {
         const pause = setTimeout(() => {

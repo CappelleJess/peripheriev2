@@ -20,7 +20,6 @@ export function createMemoryObject(scene, config) {
 
   const object = scene.add.image(x, y + offsetY, sprite)
     .setOrigin(0.5, 1)
-    //.setInteractive({ useHandCursor: true })
     .setScale(scale)
     .setDepth(2)
     .setName(key)
@@ -37,6 +36,7 @@ export function createMemoryObject(scene, config) {
     .setDepth(3);
 
   let isDialogueOpen = false;
+  let memoryText = null;
 
   zone.on('pointerdown', () => {
     if (alreadyUsed || GameState.dialogueOpen || isDialogueOpen) return;
@@ -81,7 +81,7 @@ export function createMemoryObject(scene, config) {
         GameState.objectsInteracted += 1;
         object.setAlpha(0.9); 
 
-        const memoryText = scene.add.text(object.x, objectTopY + 30, text, {
+        memoryText = scene.add.text(object.x, objectTopY + 30, text, {
           fontSize: '18px',
           fill: '#ffffff',
           wordWrap: { width: 320, useAdvancedWrap: true },
@@ -90,15 +90,10 @@ export function createMemoryObject(scene, config) {
         })
           .setOrigin(0.5)
           .setDepth(12)
-          .disableInteractive?.();
+          .setVisible(true);
 
         scene.time.delayedCall(5000, () => {
-          scene.tweens.add({
-            targets: memoryText,
-            alpha: 0,
-            duration: 800,
-            onComplete: () => memoryText.destroy()
-          });
+          if (memoryText) memoryText.setVisible(false);
         });
 
         const user = JSON.parse(localStorage.getItem('user'));
@@ -133,6 +128,20 @@ export function createMemoryObject(scene, config) {
       0xff0000, 0.3
     ).setOrigin(0.5, 1).setDepth(4);
   } */
+
+    zone.on('pointerover', () => {
+    scene.input.setDefaultCursor('default');
+    if (GameState.interactions[key] && memoryText && !GameState.dialogueOpen) {
+      memoryText.setVisible(true);
+      scene.time.delayedCall(3000, () => {
+        memoryText?.setVisible(false);
+      });
+    }
+  });
+
+  zone.on('pointerout', () => {
+    scene.input.setDefaultCursor('default');
+  });
 }
 
 // Convertit les noms en clefs
