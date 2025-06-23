@@ -1,5 +1,3 @@
-
-
 function AssetTable({ assets, onEdit, onDelete }) {
   return (
     <table className="w-full table-auto border-collapse text-white">
@@ -29,8 +27,8 @@ function AssetTable({ assets, onEdit, onDelete }) {
               }
             </td>
             <td className="p-2 border">
-              <button onClick={() => onEdit(asset)} className="text-blue-300 hover:text-blue-500 mr-2"><i class="fa-solid fa-pencil"></i></button>
-              <button onClick={() => onDelete(asset._id)} className="text-red-400 hover:text-red-600"><i class="fa-regular fa-trash-can"></i></button>
+              <button onClick={() => onEdit(asset)} className="text-blue-300 hover:text-blue-500 mr-2"><i className="fa-solid fa-pencil"></i></button>
+              <button onClick={() => onDelete(asset._id)} className="text-red-400 hover:text-red-600"><i className="fa-regular fa-trash-can"></i></button>
             </td>
           </tr>
         ))}

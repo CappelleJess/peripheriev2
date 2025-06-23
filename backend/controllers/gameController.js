@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Profile from '../models/Profile.js';
+import Asset from '../models/Assets.js';
 
 // Chargement dynamique du fichier JSON contenant la logique métier des choix
 const rulesPath = path.resolve('data/choiceRules.json');
@@ -52,52 +53,64 @@ export async function getGameProgress(req, res) {
     }
 }
 
+export const getUnlockedAssets = async (req, res) => {
+  try {
+    const profileId = req.params.profileId;
+    const assets = await Asset.find({ unlockedBy: profileId });
+    res.status(200).json({ message: "Objets débloqués récupérés", assets });
+  } catch (err) {
+    console.error("Erreur dans getUnlockedAssets:", err);
+    res.status(500).json({ message: "Erreur serveur", error: err.message });
+  }
+};
+
 // Enregistrer un choix du joueur
 export async function savePlayerChoice(req, res) {
-    const { choice } = req.body;
-    const userId = req.params.userId;
+  const { choice } = req.body;
 
-    const impact = choiceRules[choice];
+  if (!choice || !choice.objectKey || !choice.impactOnStory) {
+    return res.status(400).json({ message: "Requête mal formée : données de choix manquantes." });
+  }
 
-    if (!impact) {
-        return res.status(400).json({
-        message: `Le choix "${choice}" n'est pas défini dans choiceRules.json`
-        });
-    }
+  const userId = req.params.userId;
 
-    try {
-        const profile = await Profile.findOneAndUpdate(
-        { user: userId },
-        {
-            $inc: {
-            souvenirScore: impact.souvenirScore || 0,
-            ancragePasse: impact.ancragePasse || 0,
-            emergenceNostalgie: impact.emergenceNostalgie || 0
-            },
-            $push: {
-            choices: {
-                choice,
-                impactOnStory: impact
-            }
-            }
+  try {
+    const profile = await Profile.findOneAndUpdate(
+      { user: userId },
+      {
+        $inc: {
+          souvenirScore: choice.impactOnStory.souvenir || 0,
+          ancragePasse: choice.impactOnStory.ancrage || 0,
+          emergenceNostalgie: choice.impactOnStory.emergence || 0,
         },
-        { new: true }
-        );
+        $push: {
+          choices: {
+            choice: choice.choiceKey,
+            impactOnStory: choice.impactOnStory,
+          }
+        },
+        $addToSet: choice.unlockAssetKey ? {
+          objetsDebloques: choice.unlockAssetKey
+        } : {}
+      },
+      { new: true }
+    );
 
-        if (!profile) {
-        return res.status(404).json({ message: "Profil non trouvé" });
-        }
-
-        res.status(200).json({
-        message: "Choix enregistré avec succès",
-        souvenirScore: profile.souvenirScore,
-        ancragePasse: profile.ancragePasse,
-        emergenceNostalgie: profile.emergenceNostalgie
-        });
-    } catch (err) {
-        console.error("Erreur dans savePlayerChoice:", err);
-        res.status(500).json({ message: "Erreur serveur", error: err.message });
+    if (!profile) {
+      return res.status(404).json({ message: "Profil non trouvé" });
     }
+
+    res.status(200).json({
+      message: "Choix enregistré avec succès",
+      souvenirScore: profile.souvenirScore,
+      ancragePasse: profile.ancragePasse,
+      emergenceNostalgie: profile.emergenceNostalgie,
+      objetsDebloques: profile.objetsDebloques
+    });
+  } catch (err) {
+    console.error("Erreur dans savePlayerChoice:", err);
+    res.status(500).json({ message: "Erreur serveur", error: err.message });
+  }
 }
 
 // Mettre à jour les scores du joueur (souvenirScore, par exemple)
@@ -108,9 +121,9 @@ export async function updateGameScores(req, res) {
         const profile = await Profile.findOneAndUpdate(
             { user: req.params.userId },
             {
-                souvenirScore,  // Mise à jour du souvenirScore
-                ancragePasse,   // Mise à jour du ancragePasse
-                emergenceNostalgie  // Mise à jour de l'émergenceNostalgie
+                souvenirScore,
+                ancragePasse,
+                emergenceNostalgie
             },
             { new: true }
         );

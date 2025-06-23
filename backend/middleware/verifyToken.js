@@ -16,7 +16,7 @@ export function verifyToken(req, res, next) {
     // Vérifie et décode le token avec la clé secrète
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     console.log("Token décodé :", decoded);
-    req.userId = decoded.userId; // On ajoute l'ID de l'utilisateur à la requête
+    req.userId = decoded.userId; // Ajoute l'ID de l'utilisateur à la requête
     next();
   } catch (err) {
     console.error("Erreur de vérification du token :", err.message);

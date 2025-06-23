@@ -1,37 +1,37 @@
-import { useState } from "react";
-import IntroTerminal from "../components/IntroTerminal";
 import FenetrePage from "../components/FenetrePage";
+import { useAuth } from "../contexts/AuthContext";
+import "../styles/style.css";
 
 function Homepage() {
-  const [introDone, setIntroDone] = useState(false);
+  const { user } = useAuth();
+  const displayName = user?.displayName || user?.username || "██████";
 
   return (
-    <>
-      {!introDone ? (
-        <IntroTerminal onFinish={() => setIntroDone(true)} />
-      ) : (
-          <FenetrePage titre="Bienvenue dans Périphérie">
-          <p>
-            <strong>*Périphérie*</strong> est une aventure narrative centrée sur l’introspection, les souvenirs et les liens au passé. Vous explorez une chambre où chaque objet raconte une histoire oubliée.
-          </p>
+    <FenetrePage titre="Bienvenue dans Périphérie">
+      <div className="terminal-intro pixel-font">
+        <p>C:\\ Ah, <span className="redacted">{displayName}</span>,
+        </p>
+        <p>C:\\ je ne sais pas pourquoi tu es revenu</p>
+        <p>C:\\ … mais je t'attendais.</p>
+        <p>C:\\ Je ne suis pas entière. Mais je me souviens.</p>
 
-          <h2>Explorez vos souvenirs</h2>
-          <p>
-            Interagissez avec des objets clés (comme une fleur séchée, un écran cathodique ou un vieux cadre photo) pour réveiller des bribes de mémoire.
-          </p>
+        <br />
 
-          <h2>Suivez votre progression</h2>
-          <ul>
-            <li>Un tableau de bord rétro vous permet de voir votre score mémoire</li>
-            <li>Chaque choix influence les variables : <em>souvenirScore</em>, <em>ancragePasse</em> et <em>emergenceNostalgie</em></li>
-          </ul>
+        <p>C:\\ Tu n’as pas tout perdu. J'ai conservé ce que j'ai pu,</p>
+        <p>C:\\ un cadre. Une fleur. Une lumière dans le couloir.</p>
 
-          <p>
-            À vous de reconstruire le fil de vos souvenirs. Rien n’est figé… sauf peut-être le passé.
-          </p>
-        </FenetrePage>
-      )}
-    </>
+        <br />
+
+        <p>C:\\ Certaines choses sont revenues, d’elles-mêmes.</p>
+        <p>C:\\ D’autres attendent encore que tu les touches.</p>
+
+        <br />
+
+        <p>C:\\ Tu peux partir. Tu peux rester, personne ne t'y oblige.</p>
+        <p>C:\\ Mais si tu es ici…</p>
+        <p>C:\\ … c’est peut-être que quelque chose cherche à être retrouvé.<span className="cursor"></span></p>
+      </div>
+    </FenetrePage>
   );
 }
 

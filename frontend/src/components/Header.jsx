@@ -1,15 +1,15 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import DropdownMenu from "./DropdownMenu";
 
-function Header() { 
+function Header() {
   const { isAuthenticated, logout, user } = useAuth();
-  const navigate = useNavigate(); // Hook pour naviguer dynamiquement
-  // const [showMenu, setShowMenu] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    navigate("/");
-};
+    navigate("/", { replace: true });
+  };
 
   return (
     <header className="custom-header">
@@ -21,59 +21,38 @@ function Header() {
         </NavLink>
 
         <nav className="nav-links items-center">
-          {!isAuthenticated ? ( 
-            <>
-              <NavLink to="/">Accueil</NavLink>
-              <NavLink to="/play">Jouer</NavLink>
-              <NavLink to="/gameuniverse">Univers du jeu</NavLink>
-              <NavLink to="/news">Actualites</NavLink>
-              <NavLink to="/about">À propos</NavLink>
-              <NavLink to="/login">Connexion</NavLink>
-              <NavLink to="/register">Inscription</NavLink>
-            </>
-          ) : (
-            <>
-              <NavLink to="/">Accueil</NavLink>
-              {user?.role === 'user' && (
-                <>
-                  <NavLink to="/play">Jouer</NavLink>
-                  <NavLink to="/gameuniverse">Univers du jeu</NavLink>
-                  <NavLink to="/news">Actualites</NavLink>
-                  <NavLink to="/dashboard">Dashboard</NavLink>
-                </>
-              )}
-              {user?.role === 'admin' && (
-                <NavLink to="/admin" className="text-[#00ff9f]">Admin</NavLink>
-              )}
-              <button onClick={handleLogout}>Déconnexion</button>
-            </>
-          )}
-        </nav>
+          {user?.role === 'user' && (
+          <NavLink to="/">Entrée</NavLink>)}
+          {!user?.role !== 'admin' && (
+            <DropdownMenu
+              title="Codex"
+              items={[
+                { label: "[ NOEUDS ]", route: "/codex" },
+                { label: "[ INVENTAIRE ]", route: "/reliques" },
+                { label: "[ JOURNAL DE DÉRIVE ]", route: "/fragments" },
+                { label: "[ CARTE ]", route: "/bios" },
+                { label: "[ CLAUSES D’EXISTENCE ]", route: "/mentions-legales" },
+                // { label: "[ CONSOLE ]", route: "/logs" }, // optionnel
+              ]}
+            />)}
 
-        {/* <button
-          className="menu-button"
-          onClick={() => setShowMenu(!showMenu)}
-        >
-          ≡
-        </button> */}
-      </div>
+          {user?.role === 'admin' && (
+            <NavLink to="/admin" className="text-[#00ff9f]">Admin</NavLink>
+            )}
+          {user?.role === 'admin' && (
+            <NavLink to="/play" className="text-[#00ff9f]">Jeu</NavLink>
+            )}
 
-      {/* {showMenu && (
-        <div className="dropdown-menu">
           {!isAuthenticated ? (
             <>
               <NavLink to="/login">Connexion</NavLink>
               <NavLink to="/register">Inscription</NavLink>
             </>
           ) : (
-            <>
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <NavLink to="/settings">Paramètres</NavLink>
-              <button onClick={handleLogout}>Déconnexion</button>
-            </>
+            <button onClick={handleLogout}>Déconnexion</button>
           )}
-        </div>
-      )} */}
+        </nav>
+      </div>
     </header>
   );
 }

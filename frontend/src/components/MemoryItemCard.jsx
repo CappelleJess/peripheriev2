@@ -1,18 +1,27 @@
 const ICONES_MEMOIRE = {
-  fleur: "/img/flower.png",
-  cadre: "/img/frame.png",
-  ordinateur: "img/pc.png",
-  journal: "img/diary.png",
+  flower: "/img/flower.png",
+  frame: "/img/frame.png",
+  computer: "/img/pc.png",
+  diary: "/img/diary.png",
 };
 
 const MemoryItemCard = ({ item }) => {
-const icone = ICONES_MEMOIRE[item.toLowerCase()] || "?";
+  const iconSrc = ICONES_MEMOIRE[item.toLowerCase()];
+
   return (
-    <div className="px-2 py-1 bg-[#2e2e2e] rounded text-xl flex items-center shadow">
-      <span>{icone}</span>
-      <span className="ml-2 text-sm font-mono text-[#faf3e0]">{item}</span>
-    </div>
+    <div className="group flex items-center gap-2 px-3 py-2 rounded-xl bg-[#2e2e2e] text-[#faf3e0] shadow-md hover:shadow-neon transition duration-300 border border-[#6b728e] relative">
+      {iconSrc ? (
+        <img src={iconSrc} alt={item} className="w-8 h-8 object-contain drop-shadow-md group-hover:scale-105 transition-transform"/>
+      ) : (
+        <span className="text-red-500 font-bold">?</span>
+      )}
+      <span className="font-mono text-sm">{item}</span>
+      <div className="absolute inset-0 rounded-xl blur-sm opacity-30 group-hover:opacity-60 transition duration-300 pointer-events-none"
+          style={{ boxShadow: "0 0 10px #9b5de5, 0 0 20px #9b5de5" }}
+        ></div>
+      </div>
   );
 };
 
 export default MemoryItemCard;
+

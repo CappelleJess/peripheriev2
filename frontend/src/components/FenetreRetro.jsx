@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // Import framer-motion
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "../styles/style.css";
 
 function FenetreRetro({ title, children, tabs }) {

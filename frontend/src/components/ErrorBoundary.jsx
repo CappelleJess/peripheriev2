@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -6,8 +6,8 @@ class ErrorBoundary extends Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
-    // Mettre à jour l’état pour afficher l’UI de repli
+  static getDerivedStateFromError() {
+    // MaJ pour afficher l’UI de repli
     return { hasError: true };
   }
 

@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion';
 
-// Obtenir une couleur dynamique selon le score
 const getColor = (score) => {
-  if (score >= 80) return '#00ff9f'; // vert flashy
-  if (score >= 50) return '#4a90e2'; // bleu calme
-  return '#d65a31';                  // orange nostalgie
+  if (score >= 80) return '#00ff9f';
+  if (score >= 50) return '#4a90e2';
+  return '#d65a31';
 };
 
-// Obtenir une description qualitative
 const getLabel = (score) => {
   if (score >= 80) return 'Souvenirs intenses';
   if (score >= 50) return 'Mémoire partielle';

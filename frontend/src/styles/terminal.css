@@ -1,0 +1,55 @@
+.terminal-ctn {
+  background: linear-gradient(to bottom, #1b1f3b, #2e2e2e);
+  padding: 1.5rem;
+  border: 1px solid #00ff9f;
+  border-radius: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #00ff9f;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  box-shadow: 0 0 15px #00ff9f44;
+  min-height: 300px;
+  overflow-y: auto;
+}
+
+.terminal-header {
+  color: #9b5de5;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.terminal-line {
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 4px #9b5de5, 0 0 2px #faf3e0;
+  transition: opacity 0.4s ease;
+  
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+.terminal-btn {
+  background-color: #2e2e2e;
+  color: #faf3e0;
+  border: 1px solid #6b728e;
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.terminal-btn:hover {
+  background-color: #9b5de5;
+  color: black;
+  box-shadow: 0 0 8px #9b5de5;
+  cursor: pointer;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

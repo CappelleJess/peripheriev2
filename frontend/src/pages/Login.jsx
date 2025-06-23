@@ -10,7 +10,7 @@ function Login() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const { login } = useAuth();  // Utiliser le hook du contexte Auth
+  const { login } = useAuth();
 
   // Charge le script reCAPTCHA v3 si absent
   useEffect(() => {
@@ -44,8 +44,14 @@ function Login() {
           });
 
           await login(email, password, captchaToken);
+          const userData = JSON.parse(localStorage.getItem("user"));
           console.log("Connexion réussie, redirection...");
-          navigate("/dashboard");
+          
+          if (userData?.role === "admin") {
+            navigate("/admin", { replace: true });
+          } else {
+            navigate("/intro", { replace: true });
+          }
         } catch (err) {
           console.error("Erreur lors du login ou reCAPTCHA :", err);
           setError("Échec de la connexion ou du CAPTCHA.");
