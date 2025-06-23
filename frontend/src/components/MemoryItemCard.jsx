@@ -2,7 +2,12 @@ const ICONES_MEMOIRE = {
   flower: "/img/flower.png",
   frame: "/img/frame.png",
   computer: "/img/pc.png",
-  diary: "/img/diary.png",
+  book: "/img/book.png",
+  lavalamp: "/img/lavalamp.png",
+  poster: "/img/poster.png",
+  rug: "/img/rug.png",
+  diskman: "/img/diskman.png",
+
 };
 
 const MemoryItemCard = ({ item }) => {
